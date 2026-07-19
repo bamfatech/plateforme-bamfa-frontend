@@ -9,8 +9,8 @@ export function Footer() {
         <p className="text-sm text-stone-600">© {year} BAMFA. Tous droits réservés.</p>
         <nav aria-label="Liens de pied de page" className="flex gap-6 text-sm">
           <Link href="/a-propos">À propos</Link>
+          <Link href="/vision-mission-valeurs">Vision & valeurs</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/mentions-legales">Mentions légales</Link>
         </nav>
       </Container>
     </footer>

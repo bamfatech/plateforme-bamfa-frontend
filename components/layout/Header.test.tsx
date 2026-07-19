@@ -1,13 +1,17 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { Header } from "./Header";
 
 describe("Header", () => {
-  it("affiche le logo et la navigation principale", () => {
+  it("affiche le logo et la navigation principale realignee", () => {
     render(<Header />);
     expect(screen.getByAltText("BAMFA")).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "Navigation principale" })).toBeInTheDocument();
+    const nav = screen.getByRole("navigation", { name: "Navigation principale" });
+    expect(within(nav).getByRole("link", { name: "Fonctionnement" })).toHaveAttribute(
+      "href",
+      "/fonctionnement",
+    );
   });
 
   it("bascule le menu mobile au clic sur le bouton", () => {
