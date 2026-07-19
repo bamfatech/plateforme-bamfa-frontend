@@ -16,6 +16,7 @@
     "react-dom": "19.*"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/jest-dom": "6.*",
     "@testing-library/react": "16.*",
     "@types/node": "22.*",
@@ -24,6 +25,8 @@
     "@vitejs/plugin-react": "4.*",
     "jsdom": "25.*",
     "openapi-typescript": "7.*",
+    "postcss": "^8.5.20",
+    "tailwindcss": "^4.3.3",
     "typescript": "5.*",
     "vitest": "2.*"
   }

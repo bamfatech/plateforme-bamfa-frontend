@@ -1,4 +1,14 @@
 import type { ReactNode } from "react";
+import { Inter, Poppins } from "next/font/google";
+
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export const metadata = {
   title: "BAMFA",
@@ -7,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${inter.variable} ${poppins.variable}`}>
       <body>{children}</body>
     </html>
   );
