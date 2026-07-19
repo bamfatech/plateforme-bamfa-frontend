@@ -9,7 +9,7 @@ describe("Page d'accueil", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /réseau des alumni Mastercard Foundation au Bénin/i,
+        name: /alumni Mastercard Foundation/i,
       }),
     ).toBeInTheDocument();
     expect(screen.getByText("250+")).toBeInTheDocument();
