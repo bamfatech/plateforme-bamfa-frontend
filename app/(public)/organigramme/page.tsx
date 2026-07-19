@@ -15,7 +15,7 @@ export default function OrgPage() {
       <PageHeader title={org.header.title} intro={org.header.intro} />
       <Section>
         <Container>
-          <p className="text-sm font-medium uppercase tracking-wide text-primary-600">
+          <p className="text-sm font-medium uppercase tracking-wide text-primary-700">
             {org.mandate}
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

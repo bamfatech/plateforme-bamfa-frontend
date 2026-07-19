@@ -28,6 +28,7 @@ export function ContactForm() {
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    setSent(false);
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length === 0) {

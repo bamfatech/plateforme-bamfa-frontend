@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 
 export const values = {
   header: { title: "Vision, mission & valeurs", intro: "Ce qui guide l'action de BAMFA au quotidien." },
+  valuesTitle: "Nos valeurs",
   vision: {
     title: "Vision",
     text: "Une communauté d'alumni influente et solidaire, moteur de transformation positive au Bénin.",

@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import NextLink from "next/link";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Link } from "@/components/ui/Link";
 
@@ -29,9 +29,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Button variant="gradient" size="sm">
+          <NextLink
+            href="/contact"
+            className="inline-flex h-9 items-center rounded-md bg-brand-gradient px-3 text-sm font-medium text-white hover:opacity-90"
+          >
             Nous soutenir
-          </Button>
+          </NextLink>
         </nav>
         <button
           type="button"
@@ -53,9 +56,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Button variant="gradient" size="sm">
+            <NextLink
+              href="/contact"
+              className="inline-flex h-9 items-center rounded-md bg-brand-gradient px-3 text-sm font-medium text-white hover:opacity-90"
+              onClick={() => setOpen(false)}
+            >
               Nous soutenir
-            </Button>
+            </NextLink>
           </Container>
         </nav>
       )}

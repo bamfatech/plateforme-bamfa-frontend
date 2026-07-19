@@ -27,7 +27,7 @@ export default function ValuesPage() {
       </Section>
       <Section className="bg-cream">
         <Container>
-          <h2 className="font-heading text-2xl font-bold text-ink">Nos valeurs</h2>
+          <h2 className="font-heading text-2xl font-bold text-ink">{values.valuesTitle}</h2>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {values.items.map((v) => (
               <ValueCard key={v.title} icon={v.icon} title={v.title} description={v.description} />
