@@ -8,7 +8,7 @@ describe("Button", () => {
     render(<Button>Envoyer</Button>);
     const btn = screen.getByRole("button", { name: "Envoyer" });
     expect(btn).toBeInTheDocument();
-    expect(btn.className).toContain("bg-primary-600");
+    expect(btn.className).toContain("bg-primary-700");
   });
 
   it("est désactivé et aria-busy en chargement", () => {

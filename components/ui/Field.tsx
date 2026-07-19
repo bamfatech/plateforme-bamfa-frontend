@@ -1,3 +1,5 @@
+"use client";
+
 import { useId, type InputHTMLAttributes } from "react";
 
 export interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
