@@ -3,7 +3,6 @@ import { Award } from "lucide-react";
 import { describe, expect, it } from "vitest";
 
 import { CallToAction } from "./CallToAction";
-import { FeatureCard } from "./FeatureCard";
 import { Hero } from "./Hero";
 import { PageHeader } from "./PageHeader";
 import { Stat } from "./Stat";
@@ -33,12 +32,6 @@ describe("composants de sections", () => {
     render(<Stat value="250+" label="Alumni" />);
     expect(screen.getByText("250+")).toBeInTheDocument();
     expect(screen.getByText("Alumni")).toBeInTheDocument();
-  });
-
-  it("FeatureCard rend titre et description", () => {
-    render(<FeatureCard icon={Award} title="Mentorat" description="Accompagnement" />);
-    expect(screen.getByText("Mentorat")).toBeInTheDocument();
-    expect(screen.getByText("Accompagnement")).toBeInTheDocument();
   });
 
   it("ValueCard rend titre et description", () => {

@@ -34,6 +34,7 @@ export function ContactForm() {
     if (Object.keys(e).length === 0) {
       // TODO Sprint 2 : brancher POST /api/v1/forms/contact/
       setSent(true);
+      setValues({ name: "", email: "", subject: "", message: "" });
     }
   }
 

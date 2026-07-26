@@ -21,7 +21,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader title={contact.header.title} intro={contact.header.intro} />
-      <Section className="bg-cream">
+      <Section>
         <Container>
           <div className="grid overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm lg:grid-cols-5">
             {/* Panneau dégradé */}
