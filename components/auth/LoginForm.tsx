@@ -26,6 +26,8 @@ export function LoginForm() {
   function validate(): Errors {
     const e: Errors = {};
     if (!email.trim()) e.email = "L'e-mail est requis.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      e.email = "Format d'e-mail invalide.";
     if (!password.trim()) e.password = "Le mot de passe est requis.";
     return e;
   }

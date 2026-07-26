@@ -48,6 +48,25 @@ describe("LoginForm", () => {
     expect(screen.getByText("Le mot de passe est requis.")).toBeInTheDocument();
   });
 
+  it("bloque la soumission si l'e-mail est mal formé (aucun appel réseau)", async () => {
+    let loginCalled = false;
+    apiMock.onPost("/auth/login/").reply(() => {
+      loginCalled = true;
+      return [200, USER];
+    });
+    renderWithClient(<LoginForm />);
+    fireEvent.change(screen.getByLabelText("E-mail"), {
+      target: { value: "pas-un-email" },
+    });
+    fireEvent.change(screen.getByLabelText("Mot de passe"), {
+      target: { value: "secret" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Se connecter" }));
+    expect(await screen.findByText("Format d'e-mail invalide.")).toBeInTheDocument();
+    expect(loginCalled).toBe(false);
+    expect(replaceMock).not.toHaveBeenCalled();
+  });
+
   it("redirige vers /admin après une connexion réussie", async () => {
     apiMock.onPost("/auth/login/").reply(200, USER);
     renderWithClient(<LoginForm />);
