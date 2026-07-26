@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { Field } from "./Field";
@@ -16,5 +16,26 @@ describe("Field", () => {
     const errorId = input.getAttribute("aria-describedby");
     expect(errorId).toBeTruthy();
     expect(screen.getByText("Champ requis").id).toBe(errorId);
+  });
+
+  it("bascule la visibilité d'un champ mot de passe", () => {
+    render(<Field label="Mot de passe" type="password" />);
+    const input = screen.getByLabelText("Mot de passe");
+    expect(input).toHaveAttribute("type", "password");
+
+    const toggle = screen.getByRole("button", { name: "Afficher le mot de passe" });
+    fireEvent.click(toggle);
+    expect(input).toHaveAttribute("type", "text");
+    expect(
+      screen.getByRole("button", { name: "Masquer le mot de passe" }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Masquer le mot de passe" }));
+    expect(input).toHaveAttribute("type", "password");
+  });
+
+  it("n'affiche pas de bouton de visibilité pour un champ non mot de passe", () => {
+    render(<Field label="E-mail" type="email" />);
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 });
