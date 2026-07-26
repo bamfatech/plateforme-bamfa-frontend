@@ -17,4 +17,8 @@ describe("shouldRedirectToLogin", () => {
     expect(shouldRedirectToLogin("/connexion", false)).toBe(false);
     expect(shouldRedirectToLogin("/a-propos", false)).toBe(false);
   });
+
+  it("ne confond pas /administration avec /admin", () => {
+    expect(shouldRedirectToLogin("/administration", false)).toBe(false);
+  });
 });

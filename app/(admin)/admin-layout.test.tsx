@@ -54,5 +54,6 @@ describe("AdminLayout (garde)", () => {
     render(<AdminLayout><p>secret</p></AdminLayout>);
     expect(screen.getByText("secret")).toBeInTheDocument();
     expect(screen.getByText("admin@bamfa.org")).toBeInTheDocument();
+    expect(screen.getByText("Administrateur")).toBeInTheDocument();
   });
 });

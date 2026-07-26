@@ -4,5 +4,6 @@ export function shouldRedirectToLogin(
   pathname: string,
   hasSessionCookie: boolean,
 ): boolean {
-  return pathname.startsWith("/admin") && !hasSessionCookie;
+  const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
+  return isAdmin && !hasSessionCookie;
 }

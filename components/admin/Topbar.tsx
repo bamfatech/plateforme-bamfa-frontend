@@ -12,8 +12,13 @@ export function Topbar({ user }: { user: User }) {
   const { logout } = useAuth();
 
   async function handleLogout() {
-    await logout.mutateAsync();
-    router.replace("/connexion");
+    try {
+      await logout.mutateAsync();
+    } catch {
+      // même si l'appel serveur échoue, on déconnecte côté client
+    } finally {
+      router.replace("/connexion");
+    }
   }
 
   const displayName =

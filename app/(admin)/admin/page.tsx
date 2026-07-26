@@ -36,7 +36,7 @@ export default function DashboardPage() {
           <Card key={stat.label}>
             <p className="text-sm font-medium text-stone-500">{stat.label}</p>
             <p className="mt-2 text-3xl font-bold text-stone-300">—</p>
-            <p className="mt-1 text-xs text-stone-400">{stat.hint} · à venir</p>
+            <p className="mt-1 text-xs text-stone-600">{stat.hint} · à venir</p>
           </Card>
         ))}
       </div>
