@@ -1,4 +1,4 @@
-// Contenu de substitution — à remplacer par le contenu officiel BAMFA (noms fictifs + photos).
+// Contenu de substitution — à remplacer par le contenu officiel BAMFA (noms fictifs + photos + liens).
 export const org = {
   header: {
     title: "Organigramme",
@@ -6,11 +6,53 @@ export const org = {
   },
   mandate: "Mandat 2024-2026",
   members: [
-    { name: "Aïcha Bello", role: "Président(e)", imageSrc: "https://picsum.photos/seed/bamfa-member1/240/240" },
-    { name: "Koffi Dossa", role: "Vice-président(e)", imageSrc: "https://picsum.photos/seed/bamfa-member2/240/240" },
-    { name: "Rita Aïna", role: "Secrétaire général(e)", imageSrc: "https://picsum.photos/seed/bamfa-member3/240/240" },
-    { name: "Serge Houngbé", role: "Trésorier(ère)", imageSrc: "https://picsum.photos/seed/bamfa-member4/240/240" },
-    { name: "Fatou Kora", role: "Responsable communication", imageSrc: "https://picsum.photos/seed/bamfa-member5/240/240" },
-    { name: "Yao Mensah", role: "Responsable programmes", imageSrc: "https://picsum.photos/seed/bamfa-member6/240/240" },
+    {
+      name: "Aïcha Bello",
+      role: "Président(e)",
+      imageSrc: "https://picsum.photos/seed/bamfa-member1/480/600",
+      bio: "Porte la vision de BAMFA et fédère la communauté autour de projets à fort impact.",
+      linkedin: "#",
+      facebook: "#",
+    },
+    {
+      name: "Koffi Dossa",
+      role: "Vice-président(e)",
+      imageSrc: "https://picsum.photos/seed/bamfa-member2/480/600",
+      bio: "Appuie la présidence et coordonne les grands chantiers de l'association.",
+      linkedin: "#",
+      facebook: "#",
+    },
+    {
+      name: "Rita Aïna",
+      role: "Secrétaire général(e)",
+      imageSrc: "https://picsum.photos/seed/bamfa-member3/480/600",
+      bio: "Veille au bon fonctionnement administratif et à la mémoire de l'association.",
+      linkedin: "#",
+      facebook: "#",
+    },
+    {
+      name: "Serge Houngbé",
+      role: "Trésorier(ère)",
+      imageSrc: "https://picsum.photos/seed/bamfa-member4/480/600",
+      bio: "Garant de la transparence financière et de la bonne gestion des ressources.",
+      linkedin: "#",
+      facebook: "#",
+    },
+    {
+      name: "Fatou Kora",
+      role: "Responsable communication",
+      imageSrc: "https://picsum.photos/seed/bamfa-member5/480/600",
+      bio: "Fait rayonner BAMFA et anime la relation avec la communauté et les partenaires.",
+      linkedin: "#",
+      facebook: "#",
+    },
+    {
+      name: "Yao Mensah",
+      role: "Responsable programmes",
+      imageSrc: "https://picsum.photos/seed/bamfa-member6/480/600",
+      bio: "Conçoit et pilote les programmes de mentorat, de formation et d'impact.",
+      linkedin: "#",
+      facebook: "#",
+    },
   ],
 };

@@ -1,4 +1,3 @@
-import { Avatar } from "@/components/ui/Avatar";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { CallToAction } from "@/components/sections/CallToAction";
@@ -6,6 +5,7 @@ import { Eyebrow } from "@/components/sections/Eyebrow";
 import { Faq } from "@/components/sections/Faq";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { SplitSection } from "@/components/sections/SplitSection";
+import { TeamMemberCard } from "@/components/sections/TeamMemberCard";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Timeline } from "@/components/sections/Timeline";
 import { ValueCard } from "@/components/sections/ValueCard";
@@ -151,18 +151,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {org.members.map((member, index) => (
-                <div
-                  key={`${member.name}-${index}`}
-                  className="flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
-                >
-                  <Avatar name={member.name} src={member.imageSrc} />
-                  <div>
-                    <div className="font-heading text-lg font-semibold text-ink">
-                      {member.name}
-                    </div>
-                    <div className="mt-0.5 text-sm text-primary-700">{member.role}</div>
-                  </div>
-                </div>
+                <TeamMemberCard key={`${member.name}-${index}`} member={member} />
               ))}
             </div>
           </Container>
