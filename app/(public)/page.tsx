@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { CallToAction } from "@/components/sections/CallToAction";
@@ -76,11 +78,20 @@ export default function HomePage() {
         <Container className="text-center">
           <Eyebrow className="text-center">{home.partners.eyebrow}</Eyebrow>
           <h2 className="mt-3 font-heading text-2xl font-bold text-ink">{home.partners.title}</h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+          <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
             {home.partners.logos.map((logo) => (
-              <span key={logo} className="font-heading text-lg font-semibold text-stone-400">
-                {logo}
-              </span>
+              <div
+                key={logo.name}
+                className="relative h-16 overflow-hidden rounded-lg border border-stone-200 bg-white grayscale transition hover:grayscale-0"
+              >
+                <Image
+                  src={logo.imageSrc}
+                  alt={logo.name}
+                  fill
+                  className="object-cover opacity-80"
+                  sizes="200px"
+                />
+              </div>
             ))}
           </div>
         </Container>

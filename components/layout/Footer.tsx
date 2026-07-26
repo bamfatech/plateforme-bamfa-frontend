@@ -1,17 +1,148 @@
+import { Mail } from "lucide-react";
+import Link from "next/link";
+import type { ComponentType } from "react";
+
 import { Container } from "@/components/ui/Container";
-import { Link } from "@/components/ui/Link";
+
+type IconProps = { className?: string };
+
+function FacebookIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zm0 1.44c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.71.32-.43.16-.73.36-1.05.68-.32.32-.52.62-.68 1.05-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.04.9.19 1.38.32 1.71.16.43.36.73.68 1.05.32.32.62.52 1.05.68.33.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.71-.32.43-.16.73-.36 1.05-.68.32-.32.52-.62.68-1.05.13-.33.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.71a2.82 2.82 0 0 0-.68-1.05 2.82 2.82 0 0 0-1.05-.68c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 2.46a5.94 5.94 0 1 1 0 11.88 5.94 5.94 0 0 1 0-11.88zm0 9.8a3.86 3.86 0 1 0 0-7.72 3.86 3.86 0 0 0 0 7.72zm7.57-9.98a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z" />
+    </svg>
+  );
+}
+
+const discover = [
+  { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/fonctionnement", label: "Fonctionnement" },
+  { href: "/organigramme", label: "Organigramme" },
+  { href: "/vision-mission-valeurs", label: "Vision & valeurs" },
+];
+
+// Redirections vers les plateformes partenaires (URLs à renseigner).
+const platforms = [
+  { href: "#", label: "Transition Alumni MCF" },
+  { href: "#", label: "Baobab" },
+  { href: "#", label: "ACN" },
+];
+
+const socials: { href: string; label: string; icon: ComponentType<IconProps> }[] = [
+  { href: "#", label: "Facebook", icon: FacebookIcon },
+  { href: "#", label: "LinkedIn", icon: LinkedInIcon },
+  { href: "#", label: "Instagram", icon: InstagramIcon },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-auto border-t border-stone-200 bg-cream">
-      <Container className="flex flex-col gap-4 py-10 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-stone-600">© {year} BAMFA. Tous droits réservés.</p>
-        <nav aria-label="Liens de pied de page" className="flex gap-6 text-sm">
-          <Link href="/a-propos">À propos</Link>
-          <Link href="/vision-mission-valeurs">Vision & valeurs</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+    <footer className="mt-auto bg-ink text-stone-300">
+      <Container className="py-14">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span aria-hidden="true" className="h-7 w-7 rounded-lg bg-brand-gradient" />
+              <span className="font-heading text-xl font-bold text-white">BAMFA</span>
+            </div>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-stone-400">
+              Le réseau des alumni Mastercard Foundation au Bénin : fédérer, accompagner et
+              valoriser pour multiplier l'impact.
+            </p>
+            <div className="mt-6 flex gap-3">
+              {socials.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <nav aria-label="Découvrir">
+            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+              Découvrir
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm">
+              {discover.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-stone-400 transition hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Plateformes partenaires">
+            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+              Plateformes
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm">
+              {platforms.map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-stone-400 transition hover:text-white"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+              Contact
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-stone-400">
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                <a href="mailto:contact@bamfa.org" className="transition hover:text-white">
+                  contact@bamfa.org
+                </a>
+              </li>
+              <li>Cotonou, Bénin</li>
+              <li>
+                <Link href="/contact" className="text-primary-400 transition hover:text-primary-300">
+                  Nous écrire →
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} BAMFA. Tous droits réservés.</p>
+          <p>Site vitrine — contenu en cours d'actualisation.</p>
+        </div>
       </Container>
     </footer>
   );

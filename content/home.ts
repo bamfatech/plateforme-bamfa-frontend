@@ -70,7 +70,13 @@ export const home = {
   partners: {
     eyebrow: "Ils nous accompagnent",
     title: "Nos partenaires",
-    logos: ["Partenaire 1", "Partenaire 2", "Partenaire 3", "Partenaire 4", "Partenaire 5"],
+    logos: [
+      { name: "Partenaire 1", imageSrc: "https://picsum.photos/seed/bamfa-partner1/240/100" },
+      { name: "Partenaire 2", imageSrc: "https://picsum.photos/seed/bamfa-partner2/240/100" },
+      { name: "Partenaire 3", imageSrc: "https://picsum.photos/seed/bamfa-partner3/240/100" },
+      { name: "Partenaire 4", imageSrc: "https://picsum.photos/seed/bamfa-partner4/240/100" },
+      { name: "Partenaire 5", imageSrc: "https://picsum.photos/seed/bamfa-partner5/240/100" },
+    ],
   },
   cta: {
     title: "Devenez partenaire de BAMFA",
