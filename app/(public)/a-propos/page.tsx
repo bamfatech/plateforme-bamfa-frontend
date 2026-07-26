@@ -155,7 +155,7 @@ export default function AboutPage() {
                   key={`${member.name}-${index}`}
                   className="flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
                 >
-                  <Avatar name={member.name} />
+                  <Avatar name={member.name} src={member.imageSrc} />
                   <div>
                     <div className="font-heading text-lg font-semibold text-ink">
                       {member.name}

@@ -1,4 +1,22 @@
-export function Avatar({ name, className = "" }: { name: string; className?: string }) {
+import Image from "next/image";
+
+export function Avatar({
+  name,
+  src,
+  className = "",
+}: {
+  name: string;
+  src?: string;
+  className?: string;
+}) {
+  if (src) {
+    return (
+      <span className={`relative inline-block h-14 w-14 shrink-0 overflow-hidden rounded-full ${className}`}>
+        <Image src={src} alt={name} fill className="object-cover" sizes="56px" />
+      </span>
+    );
+  }
+
   const initials = name
     .trim()
     .split(/\s+/)
@@ -10,7 +28,7 @@ export function Avatar({ name, className = "" }: { name: string; className?: str
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-gradient font-heading text-lg font-semibold text-white ${className}`}
+      className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-gradient font-heading text-lg font-semibold text-white ${className}`}
     >
       {initials}
     </span>

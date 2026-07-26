@@ -1,6 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 
-import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -23,36 +22,46 @@ export default function ContactPage() {
     <>
       <PageHeader title={contact.header.title} intro={contact.header.intro} />
       <Section className="bg-cream">
-        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-5">
-          <Card className="lg:col-span-3">
-            <ContactForm />
-          </Card>
-          <div className="flex flex-col gap-4 lg:col-span-2">
-            {coordinates.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.label}
-                  className="flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-4"
-                >
-                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50">
-                    <Icon className="h-5 w-5 text-primary-700" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <div className="text-xs uppercase tracking-wide text-stone-500">
-                      {item.label}
-                    </div>
-                    {item.href ? (
-                      <a href={item.href} className="text-ink transition hover:text-primary-700">
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className="text-ink">{item.value}</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+        <Container>
+          <div className="grid overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm lg:grid-cols-5">
+            {/* Panneau dégradé */}
+            <div className="relative overflow-hidden bg-brand-gradient p-8 text-white sm:p-10 lg:col-span-2">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl"
+              />
+              <h2 className="relative font-heading text-2xl font-bold">{contact.panel.title}</h2>
+              <p className="relative mt-3 text-white/90">{contact.panel.text}</p>
+              <ul className="relative mt-8 space-y-5">
+                {coordinates.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={item.label} className="flex items-center gap-3">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/15">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-white/70">
+                          {item.label}
+                        </div>
+                        {item.href ? (
+                          <a href={item.href} className="hover:underline">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span>{item.value}</span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Formulaire */}
+            <div className="p-8 sm:p-10 lg:col-span-3">
+              <ContactForm />
+            </div>
           </div>
         </Container>
       </Section>
