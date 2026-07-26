@@ -33,9 +33,9 @@ function InstagramIcon({ className }: IconProps) {
 const discover = [
   { href: "/", label: "Accueil" },
   { href: "/a-propos", label: "À propos" },
-  { href: "/fonctionnement", label: "Fonctionnement" },
-  { href: "/organigramme", label: "Organigramme" },
-  { href: "/vision-mission-valeurs", label: "Vision & valeurs" },
+  { href: "/a-propos#equipe", label: "Notre équipe" },
+  { href: "/a-propos#faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 // Redirections vers les plateformes partenaires (URLs à renseigner).

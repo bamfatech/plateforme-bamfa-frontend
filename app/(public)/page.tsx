@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { ImageFeatureCard } from "@/components/sections/ImageFeatureCard";
 import { SplitSection } from "@/components/sections/SplitSection";
 import { Stat } from "@/components/sections/Stat";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { home } from "@/content/home";
 
 export const metadata = {
@@ -74,7 +75,14 @@ export default function HomePage() {
         ))}
       </SplitSection>
 
-      <Section className="bg-cream">
+      <Testimonials
+        eyebrow={home.testimonials.eyebrow}
+        title={home.testimonials.title}
+        items={home.testimonials.items}
+        className="bg-cream"
+      />
+
+      <Section>
         <Container className="text-center">
           <Eyebrow className="text-center">{home.partners.eyebrow}</Eyebrow>
           <h2 className="mt-3 font-heading text-2xl font-bold text-ink">{home.partners.title}</h2>

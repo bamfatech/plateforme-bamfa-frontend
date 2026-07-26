@@ -8,9 +8,9 @@ describe("Header", () => {
     render(<Header />);
     expect(screen.getByAltText("BAMFA")).toBeInTheDocument();
     const nav = screen.getByRole("navigation", { name: "Navigation principale" });
-    expect(within(nav).getByRole("link", { name: "Fonctionnement" })).toHaveAttribute(
+    expect(within(nav).getByRole("link", { name: "À propos" })).toHaveAttribute(
       "href",
-      "/fonctionnement",
+      "/a-propos",
     );
   });
 

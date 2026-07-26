@@ -78,6 +78,15 @@ export const home = {
       { name: "Partenaire 5", imageSrc: "https://picsum.photos/seed/bamfa-partner5/240/100" },
     ],
   },
+  testimonials: {
+    eyebrow: "Témoignages",
+    title: "La voix de nos membres",
+    items: [
+      { quote: "« BAMFA, c'est une famille professionnelle sur laquelle je peux compter. »", name: "Aïcha B.", role: "Alumni, promotion 2020" },
+      { quote: "« J'ai trouvé ici des mentors et des partenaires pour mes projets. »", name: "Koffi D.", role: "Alumni, promotion 2019" },
+      { quote: "« Un réseau qui transforme l'ambition individuelle en impact collectif. »", name: "Rita A.", role: "Alumni, promotion 2021" },
+    ],
+  },
   cta: {
     title: "Devenez partenaire de BAMFA",
     description: "Ensemble, amplifions l'impact des alumni au Bénin.",

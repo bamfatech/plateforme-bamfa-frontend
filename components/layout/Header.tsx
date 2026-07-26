@@ -10,8 +10,6 @@ import { Link } from "@/components/ui/Link";
 const NAV = [
   { href: "/", label: "Accueil" },
   { href: "/a-propos", label: "À propos" },
-  { href: "/fonctionnement", label: "Fonctionnement" },
-  { href: "/organigramme", label: "Organigramme" },
   { href: "/contact", label: "Contact" },
 ];
 
