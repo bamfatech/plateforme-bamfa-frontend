@@ -39,6 +39,7 @@ describe("AdminLayout (garde)", () => {
   it("redirige vers /connexion si non authentifié", async () => {
     useAuthMock.mockReturnValue({ user: null, isLoading: false, isAuthenticated: false });
     render(<AdminLayout><p>secret</p></AdminLayout>);
+    expect(screen.queryByText("secret")).not.toBeInTheDocument(); // jamais monté, indépendant du timing de l'effet
     await waitFor(() => expect(replaceMock).toHaveBeenCalledWith("/connexion"));
     expect(screen.queryByText("secret")).not.toBeInTheDocument();
   });
