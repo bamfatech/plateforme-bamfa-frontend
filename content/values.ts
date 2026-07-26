@@ -1,17 +1,26 @@
-// Contenu de substitution — à remplacer par le contenu officiel BAMFA.
+// Contenu de substitution — à remplacer par le contenu officiel BAMFA (textes + images).
 import { Compass, HeartHandshake, Lightbulb, ShieldCheck, Sprout, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export const values = {
-  header: { title: "Vision, mission & valeurs", intro: "Ce qui guide l'action de BAMFA au quotidien." },
+  header: {
+    title: "Vision, mission & valeurs",
+    intro: "Ce qui guide l'action de BAMFA au quotidien.",
+  },
   valuesTitle: "Nos valeurs",
   vision: {
-    title: "Vision",
+    eyebrow: "Notre vision",
+    title: "Un réseau moteur de transformation",
     text: "Une communauté d'alumni influente et solidaire, moteur de transformation positive au Bénin.",
+    imageSrc: "https://picsum.photos/seed/bamfa-vision/800/600",
+    imageAlt: "Photo de substitution — vision BAMFA",
   },
   mission: {
-    title: "Mission",
+    eyebrow: "Notre mission",
+    title: "Fédérer, accompagner, agir",
     text: "Fédérer les alumni, faciliter le mentorat et le partage d'opportunités, et porter des projets à fort impact social.",
+    imageSrc: "https://picsum.photos/seed/bamfa-mission2/800/600",
+    imageAlt: "Photo de substitution — mission BAMFA",
   },
   items: [
     { icon: HeartHandshake as LucideIcon, title: "Solidarité", description: "S'entraider et avancer ensemble." },

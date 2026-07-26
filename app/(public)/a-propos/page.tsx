@@ -1,6 +1,6 @@
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
+import { CallToAction } from "@/components/sections/CallToAction";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { SplitSection } from "@/components/sections/SplitSection";
 import { about } from "@/content/about";
 
 export const metadata = {
@@ -12,16 +12,20 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader title={about.header.title} intro={about.header.intro} />
-      <Section>
-        <Container className="flex flex-col gap-10">
-          {about.sections.map((s) => (
-            <div key={s.title} className="max-w-3xl">
-              <h2 className="font-heading text-2xl font-bold text-ink">{s.title}</h2>
-              <p className="mt-3 text-stone-600">{s.text}</p>
-            </div>
-          ))}
-        </Container>
-      </Section>
+      {about.sections.map((section, index) => (
+        <SplitSection
+          key={section.title}
+          eyebrow={section.eyebrow}
+          title={section.title}
+          imageSrc={section.imageSrc}
+          imageAlt={section.imageAlt}
+          imageSide={index % 2 === 0 ? "right" : "left"}
+          className={index % 2 === 1 ? "bg-cream" : undefined}
+        >
+          <p>{section.text}</p>
+        </SplitSection>
+      ))}
+      <CallToAction {...about.cta} />
     </>
   );
 }

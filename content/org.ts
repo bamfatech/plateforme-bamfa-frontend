@@ -1,4 +1,4 @@
-// Contenu de substitution — à remplacer par le contenu officiel BAMFA.
+// Contenu de substitution — à remplacer par le contenu officiel BAMFA (noms fictifs).
 export const org = {
   header: {
     title: "Organigramme",
@@ -6,11 +6,11 @@ export const org = {
   },
   mandate: "Mandat 2024-2026",
   members: [
-    { name: "Nom Prénom", role: "Président(e)" },
-    { name: "Nom Prénom", role: "Vice-président(e)" },
-    { name: "Nom Prénom", role: "Secrétaire général(e)" },
-    { name: "Nom Prénom", role: "Trésorier(ère)" },
-    { name: "Nom Prénom", role: "Responsable communication" },
-    { name: "Nom Prénom", role: "Responsable programmes" },
+    { name: "Aïcha Bello", role: "Président(e)" },
+    { name: "Koffi Dossa", role: "Vice-président(e)" },
+    { name: "Rita Aïna", role: "Secrétaire général(e)" },
+    { name: "Serge Houngbé", role: "Trésorier(ère)" },
+    { name: "Fatou Kora", role: "Responsable communication" },
+    { name: "Yao Mensah", role: "Responsable programmes" },
   ],
 };
