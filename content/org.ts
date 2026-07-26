@@ -1,9 +1,6 @@
 // Contenu de substitution — à remplacer par le contenu officiel BAMFA (noms fictifs + photos + liens).
 export const org = {
-  header: {
-    title: "Organigramme",
-    intro: "L'équipe qui anime BAMFA pour le mandat en cours.",
-  },
+  heading: { eyebrow: "Notre équipe", title: "Organigramme" },
   mandate: "Mandat 2024-2026",
   members: [
     {

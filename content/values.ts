@@ -3,11 +3,7 @@ import { Compass, HeartHandshake, Lightbulb, ShieldCheck, Sprout, Users } from "
 import type { LucideIcon } from "lucide-react";
 
 export const values = {
-  header: {
-    title: "Vision, mission & valeurs",
-    intro: "Ce qui guide l'action de BAMFA au quotidien.",
-  },
-  valuesTitle: "Nos valeurs",
+  valuesHeading: { eyebrow: "Nos valeurs", title: "Ce qui nous anime" },
   vision: {
     eyebrow: "Notre vision",
     title: "Un réseau moteur de transformation",

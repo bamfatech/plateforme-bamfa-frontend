@@ -26,7 +26,7 @@ export function Field({ label, error, id, className = "", ...props }: FieldProps
         {...props}
       />
       {error && (
-        <p id={errorId} className="text-sm text-danger">
+        <p id={errorId} className="text-sm text-danger-text">
           {error}
         </p>
       )}

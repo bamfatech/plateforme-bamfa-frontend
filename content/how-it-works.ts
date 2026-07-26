@@ -3,7 +3,7 @@ import { CalendarDays, Landmark, UserPlus } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export const howItWorks = {
-  header: { title: "Fonctionnement", intro: "Comment BAMFA s'organise et agit." },
+  heading: { eyebrow: "Fonctionnement", title: "Comment BAMFA s'organise" },
   sections: [
     {
       icon: Landmark as LucideIcon,
@@ -21,9 +21,4 @@ export const howItWorks = {
       text: "Mentorat, formations, événements, partage d'opportunités et projets communautaires rythment la vie de l'association.",
     },
   ],
-  cta: {
-    title: "Vous êtes alumni Mastercard Foundation ?",
-    description: "Rejoignez la communauté et contribuez à son impact.",
-    cta: { label: "Nous contacter", href: "/contact" },
-  },
 };

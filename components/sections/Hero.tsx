@@ -35,6 +35,11 @@ export function Hero({
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-black/10 blur-3xl"
       />
+      {/* Voile sombre côté texte pour garantir le contraste AA */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/45 via-ink/15 to-transparent"
+      />
       <Container className="relative grid grid-cols-1 items-center gap-12 py-20 sm:py-24 lg:grid-cols-2 lg:py-28">
         <div>
           {eyebrow && <Eyebrow tone="light">{eyebrow}</Eyebrow>}

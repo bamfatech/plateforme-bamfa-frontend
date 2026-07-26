@@ -30,6 +30,8 @@ export default function ContactPage() {
                 aria-hidden="true"
                 className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl"
               />
+              {/* Voile sombre pour garantir le contraste AA du texte blanc */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-ink/20" />
               <h2 className="relative font-heading text-2xl font-bold">{contact.panel.title}</h2>
               <p className="relative mt-3 text-white/90">{contact.panel.text}</p>
               <ul className="relative mt-8 space-y-5">
@@ -41,7 +43,7 @@ export default function ContactPage() {
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                       <div>
-                        <div className="text-xs uppercase tracking-wide text-white/70">
+                        <div className="text-xs uppercase tracking-wide text-white/85">
                           {item.label}
                         </div>
                         {item.href ? (

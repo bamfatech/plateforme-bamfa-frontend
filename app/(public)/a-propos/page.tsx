@@ -91,9 +91,9 @@ export default function AboutPage() {
       <div id="valeurs" className="scroll-mt-24">
         <Section>
           <Container>
-            <Eyebrow>Nos valeurs</Eyebrow>
+            <Eyebrow>{values.valuesHeading.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {values.valuesTitle}
+              {values.valuesHeading.title}
             </h2>
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {values.items.map((value) => (
@@ -112,9 +112,9 @@ export default function AboutPage() {
       <div id="fonctionnement" className="scroll-mt-24">
         <Section className="bg-cream">
           <Container>
-            <Eyebrow>Fonctionnement</Eyebrow>
+            <Eyebrow>{howItWorks.heading.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              Comment BAMFA s'organise
+              {howItWorks.heading.title}
             </h2>
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
               {howItWorks.sections.map((section) => {
@@ -142,9 +142,9 @@ export default function AboutPage() {
       <div id="equipe" className="scroll-mt-24">
         <Section>
           <Container>
-            <Eyebrow>Notre équipe</Eyebrow>
+            <Eyebrow>{org.heading.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              Organigramme
+              {org.heading.title}
             </h2>
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary-700">
               {org.mandate}
