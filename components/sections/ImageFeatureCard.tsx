@@ -1,6 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 
+import { cardShell } from "@/components/ui/styles";
+
 export function ImageFeatureCard({
   icon: Icon,
   title,
@@ -15,7 +17,7 @@ export function ImageFeatureCard({
   imageAlt: string;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
+    <article className={`group flex h-full flex-col overflow-hidden ${cardShell}`}>
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={imageSrc}

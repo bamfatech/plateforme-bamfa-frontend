@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { cardShell } from "@/components/ui/styles";
 import { CallToAction } from "@/components/sections/CallToAction";
 import { Eyebrow } from "@/components/sections/Eyebrow";
 import { Faq } from "@/components/sections/Faq";
@@ -135,7 +136,7 @@ export default function AboutPage() {
                 const Icon = section.icon;
                 return (
                   <Reveal key={section.title}>
-                    <article className="h-full rounded-sm border border-stone-300 bg-white p-7 transition-colors hover:border-ink">
+                    <article className={`h-full p-7 ${cardShell}`}>
                       <Icon className="h-6 w-6 text-flame-ink" aria-hidden="true" />
                       <h3 className="mt-4 font-heading text-xl font-semibold text-ink">
                         {section.title}

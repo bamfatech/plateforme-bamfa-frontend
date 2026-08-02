@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { cardShell } from "@/components/ui/styles";
 import { FacebookIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 
 type Member = {
@@ -13,7 +14,7 @@ type Member = {
 
 export function TeamMemberCard({ member }: { member: Member }) {
   return (
-    <article className="group h-full overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
+    <article className={`group h-full overflow-hidden ${cardShell}`}>
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={member.imageSrc}
