@@ -8,7 +8,7 @@ vi.mock("next/font/google", () => ({
 }));
 
 // Polyfills jsdom pour le motion (Reveal / Lenis) — Task 3 s'appuie dessus.
-if (!("matchMedia" in window)) {
+if (typeof window.matchMedia !== "function") {
   Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: (query: string) => ({
@@ -24,7 +24,7 @@ if (!("matchMedia" in window)) {
   });
 }
 
-if (!("IntersectionObserver" in globalThis)) {
+if (typeof globalThis.IntersectionObserver !== "function") {
   class IO {
     observe() {}
     unobserve() {}
@@ -35,4 +35,13 @@ if (!("IntersectionObserver" in globalThis)) {
   }
   // @ts-expect-error - polyfill de test
   globalThis.IntersectionObserver = IO;
+}
+
+if (typeof globalThis.ResizeObserver !== "function") {
+  class RO {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  globalThis.ResizeObserver = RO;
 }
