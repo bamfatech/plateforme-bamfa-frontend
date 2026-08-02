@@ -39,7 +39,7 @@ export function Footer() {
               alt="BAMFA"
               width={132}
               height={35}
-              className="h-9 w-auto rounded-sm bg-white/95 px-2 py-1"
+              className="h-10 w-auto rounded-sm"
             />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-stone-400">
               Le réseau des alumni Mastercard Foundation au Bénin : fédérer, accompagner et

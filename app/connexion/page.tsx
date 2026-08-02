@@ -19,7 +19,7 @@ export default function ConnexionPage() {
             alt="BAMFA"
             width={132}
             height={35}
-            className="h-9 w-auto rounded-sm bg-white/95 px-2 py-1"
+            className="h-10 w-auto rounded-sm"
           />
         </Link>
         <div>
@@ -41,7 +41,7 @@ export default function ConnexionPage() {
       <div className="flex items-center justify-center bg-paper px-6 py-12">
         <div className="w-full max-w-sm">
           <Link href="/" className="mb-10 inline-flex lg:hidden">
-            <Image src="/logo.jpg" alt="BAMFA" width={120} height={32} className="h-8 w-auto" />
+            <Image src="/logo.png" alt="BAMFA" width={120} height={32} className="h-9 w-auto" />
           </Link>
           <h2 className="font-heading text-3xl font-semibold tracking-tight text-ink">Connexion</h2>
           <p className="mt-2 text-sm text-stone-600">

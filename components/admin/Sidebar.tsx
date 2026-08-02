@@ -25,7 +25,7 @@ export function Sidebar({ user }: { user: User }) {
     <aside className="hidden w-64 shrink-0 flex-col border-r border-stone-300 bg-paper lg:flex">
       <div className="flex h-16 items-center border-b border-stone-300 px-6">
         <Link href="/admin" className="inline-flex">
-          <Image src="/logo.jpg" alt="BAMFA" width={110} height={29} className="h-7 w-auto" />
+          <Image src="/logo.png" alt="BAMFA" width={140} height={35} className="h-8 w-auto" />
         </Link>
       </div>
       <nav className="flex-1 space-y-1 p-4" aria-label="Navigation principale">
