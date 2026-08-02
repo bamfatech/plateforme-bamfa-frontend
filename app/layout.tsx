@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 
 import { Providers } from "@/components/providers/Providers";
-import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
@@ -18,9 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className={`${geist.variable} ${geistMono.variable} ${fraunces.variable}`}>
       <body>
-        <Providers>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
