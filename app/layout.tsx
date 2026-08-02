@@ -1,15 +1,13 @@
 import type { ReactNode } from "react";
-import { Inter, Poppins } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 
 import { Providers } from "@/components/providers/Providers";
+import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-poppins",
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
 
 export const metadata = {
   title: "BAMFA",
@@ -18,9 +16,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="fr" className={`${geist.variable} ${geistMono.variable} ${fraunces.variable}`}>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </Providers>
       </body>
     </html>
   );
