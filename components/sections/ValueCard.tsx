@@ -12,7 +12,7 @@ export function ValueCard({
   description: string;
 }) {
   return (
-    <Card className="flex gap-4">
+    <Card className="flex h-full gap-4">
       <Icon className="h-6 w-6 shrink-0 text-flame-ink" aria-hidden="true" />
       <div>
         <h3 className="font-heading text-lg font-semibold text-ink">{title}</h3>

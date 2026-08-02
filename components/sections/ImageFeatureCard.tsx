@@ -15,7 +15,7 @@ export function ImageFeatureCard({
   imageAlt: string;
 }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
+    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={imageSrc}

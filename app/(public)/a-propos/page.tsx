@@ -34,7 +34,7 @@ export default function AboutPage() {
             <a
               key={anchor.href}
               href={anchor.href}
-              className="text-stone-600 transition-colors hover:text-flame-ink"
+              className="rounded-sm text-stone-600 transition-colors hover:text-flame-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame"
             >
               {anchor.label}
             </a>

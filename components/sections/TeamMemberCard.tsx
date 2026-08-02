@@ -13,7 +13,7 @@ type Member = {
 
 export function TeamMemberCard({ member }: { member: Member }) {
   return (
-    <article className="group overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
+    <article className="group h-full overflow-hidden rounded-sm border border-stone-300 bg-white transition-colors hover:border-ink">
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={member.imageSrc}
