@@ -1,9 +1,11 @@
+import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { CallToAction } from "@/components/sections/CallToAction";
 import { Eyebrow } from "@/components/sections/Eyebrow";
 import { Faq } from "@/components/sections/Faq";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { SectionDivider } from "@/components/sections/SectionDivider";
 import { SplitSection } from "@/components/sections/SplitSection";
 import { TeamMemberCard } from "@/components/sections/TeamMemberCard";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -25,14 +27,14 @@ export default function AboutPage() {
     <>
       <PageHeader title={about.header.title} intro={about.header.intro} />
 
-      {/* Navigation d'ancres */}
-      <div className="border-b border-stone-200 bg-white">
-        <Container className="flex flex-wrap gap-x-6 gap-y-2 py-4 text-sm">
+      {/* Navigation d'ancres éditoriale */}
+      <div className="sticky top-16 z-30 border-b border-stone-300 bg-paper/90 backdrop-blur">
+        <Container className="flex flex-wrap gap-x-6 gap-y-2 py-3 font-mono text-xs uppercase tracking-[0.12em]">
           {about.anchors.map((anchor) => (
             <a
               key={anchor.href}
               href={anchor.href}
-              className="text-stone-600 transition hover:text-primary-700"
+              className="text-stone-600 transition-colors hover:text-flame-ink"
             >
               {anchor.label}
             </a>
@@ -40,98 +42,107 @@ export default function AboutPage() {
         </Container>
       </div>
 
-      <div id="qui-sommes-nous" className="scroll-mt-24">
-        <SplitSection
-          eyebrow={about.intro.eyebrow}
-          title={about.intro.title}
-          imageSrc={about.intro.imageSrc}
-          imageAlt={about.intro.imageAlt}
-          imageSide="right"
-        >
-          {about.intro.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </SplitSection>
+      <div id="qui-sommes-nous" className="scroll-mt-28">
+        <Reveal>
+          <SplitSection
+            eyebrow={about.intro.eyebrow}
+            title={about.intro.title}
+            imageSrc={about.intro.imageSrc}
+            imageAlt={about.intro.imageAlt}
+            imageSide="right"
+          >
+            {about.intro.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </SplitSection>
+        </Reveal>
       </div>
 
-      <div id="histoire" className="scroll-mt-24">
-        <Section className="bg-cream">
+      <SectionDivider />
+
+      <div id="histoire" className="scroll-mt-28">
+        <Section>
           <Container className="max-w-3xl">
-            <Eyebrow>{about.history.eyebrow}</Eyebrow>
-            <h2 className="mb-8 mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {about.history.title}
-            </h2>
+            <Reveal>
+              <Eyebrow>{about.history.eyebrow}</Eyebrow>
+              <h2 className="mb-10 mt-4 font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                {about.history.title}
+              </h2>
+            </Reveal>
             <Timeline steps={about.history.steps} />
           </Container>
         </Section>
       </div>
 
-      <div id="vision-mission" className="scroll-mt-24">
-        <SplitSection
-          eyebrow={values.vision.eyebrow}
-          title={values.vision.title}
-          imageSrc={values.vision.imageSrc}
-          imageAlt={values.vision.imageAlt}
-          imageSide="right"
-        >
-          <p>{values.vision.text}</p>
-        </SplitSection>
-        <SplitSection
-          eyebrow={values.mission.eyebrow}
-          title={values.mission.title}
-          imageSrc={values.mission.imageSrc}
-          imageAlt={values.mission.imageAlt}
-          imageSide="left"
-          className="bg-cream"
-        >
-          <p>{values.mission.text}</p>
-        </SplitSection>
+      <div id="vision-mission" className="scroll-mt-28">
+        <Reveal>
+          <SplitSection
+            eyebrow={values.vision.eyebrow}
+            title={values.vision.title}
+            imageSrc={values.vision.imageSrc}
+            imageAlt={values.vision.imageAlt}
+            imageSide="right"
+          >
+            <p>{values.vision.text}</p>
+          </SplitSection>
+        </Reveal>
+        <Reveal>
+          <SplitSection
+            eyebrow={values.mission.eyebrow}
+            title={values.mission.title}
+            imageSrc={values.mission.imageSrc}
+            imageAlt={values.mission.imageAlt}
+            imageSide="left"
+          >
+            <p>{values.mission.text}</p>
+          </SplitSection>
+        </Reveal>
       </div>
 
-      <div id="valeurs" className="scroll-mt-24">
+      <SectionDivider />
+
+      <div id="valeurs" className="scroll-mt-28">
         <Section>
           <Container>
-            <Eyebrow>{values.valuesHeading.eyebrow}</Eyebrow>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {values.valuesHeading.title}
-            </h2>
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <Reveal>
+              <Eyebrow>{values.valuesHeading.eyebrow}</Eyebrow>
+              <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                {values.valuesHeading.title}
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {values.items.map((value) => (
-                <ValueCard
-                  key={value.title}
-                  icon={value.icon}
-                  title={value.title}
-                  description={value.description}
-                />
+                <Reveal key={value.title}>
+                  <ValueCard icon={value.icon} title={value.title} description={value.description} />
+                </Reveal>
               ))}
             </div>
           </Container>
         </Section>
       </div>
 
-      <div id="fonctionnement" className="scroll-mt-24">
-        <Section className="bg-cream">
+      <div id="fonctionnement" className="scroll-mt-28">
+        <Section>
           <Container>
-            <Eyebrow>{howItWorks.heading.eyebrow}</Eyebrow>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {howItWorks.heading.title}
-            </h2>
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <Reveal>
+              <Eyebrow>{howItWorks.heading.eyebrow}</Eyebrow>
+              <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                {howItWorks.heading.title}
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
               {howItWorks.sections.map((section) => {
                 const Icon = section.icon;
                 return (
-                  <article
-                    key={section.title}
-                    className="rounded-2xl border border-stone-200 bg-white p-7 shadow-sm"
-                  >
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
-                      <Icon className="h-6 w-6 text-primary-700" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-5 font-heading text-xl font-semibold text-ink">
-                      {section.title}
-                    </h3>
-                    <p className="mt-2 text-stone-600">{section.text}</p>
-                  </article>
+                  <Reveal key={section.title}>
+                    <article className="h-full rounded-sm border border-stone-300 bg-white p-7 transition-colors hover:border-ink">
+                      <Icon className="h-6 w-6 text-flame-ink" aria-hidden="true" />
+                      <h3 className="mt-4 font-heading text-xl font-semibold text-ink">
+                        {section.title}
+                      </h3>
+                      <p className="mt-2 leading-relaxed text-stone-600">{section.text}</p>
+                    </article>
+                  </Reveal>
                 );
               })}
             </div>
@@ -139,34 +150,41 @@ export default function AboutPage() {
         </Section>
       </div>
 
-      <div id="equipe" className="scroll-mt-24">
+      <SectionDivider />
+
+      <div id="equipe" className="scroll-mt-28">
         <Section>
           <Container>
-            <Eyebrow>{org.heading.eyebrow}</Eyebrow>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {org.heading.title}
-            </h2>
-            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary-700">
-              {org.mandate}
-            </p>
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal>
+              <Eyebrow>{org.heading.eyebrow}</Eyebrow>
+              <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                {org.heading.title}
+              </h2>
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-flame-ink">
+                {org.mandate}
+              </p>
+            </Reveal>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {org.members.map((member, index) => (
-                <TeamMemberCard key={`${member.name}-${index}`} member={member} />
+                <Reveal key={`${member.name}-${index}`}>
+                  <TeamMemberCard member={member} />
+                </Reveal>
               ))}
             </div>
           </Container>
         </Section>
       </div>
 
-      <div id="faq" className="scroll-mt-24">
-        <Faq eyebrow={about.faq.eyebrow} title={about.faq.title} items={about.faq.items} className="bg-cream" />
+      <div id="faq" className="scroll-mt-28">
+        <Faq eyebrow={about.faq.eyebrow} title={about.faq.title} items={about.faq.items} />
       </div>
+
+      <SectionDivider />
 
       <Testimonials
         eyebrow={about.testimonials.eyebrow}
         title={about.testimonials.title}
         items={about.testimonials.items}
-        className=""
       />
 
       <CallToAction {...about.cta} />
