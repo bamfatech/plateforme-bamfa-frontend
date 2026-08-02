@@ -17,8 +17,11 @@ export function Field({ label, error, id, className = "", type, ...props }: Fiel
   const inputType = isPassword && visible ? "text" : type;
 
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={inputId} className="text-sm font-medium text-ink">
+    <div className="flex flex-col gap-1.5">
+      <label
+        htmlFor={inputId}
+        className="font-mono text-xs uppercase tracking-[0.15em] text-stone-600"
+      >
         {label}
       </label>
       <div className="relative">
@@ -27,8 +30,8 @@ export function Field({ label, error, id, className = "", type, ...props }: Fiel
           type={inputType}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? errorId : undefined}
-          className={`h-11 w-full rounded-md border px-3 ${isPassword ? "pr-11" : ""} outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
-            error ? "border-danger" : "border-stone-300"
+          className={`h-11 w-full rounded-sm border bg-transparent px-3 ${isPassword ? "pr-11" : ""} text-ink outline-none focus-visible:border-flame focus-visible:ring-2 focus-visible:ring-flame/40 ${
+            error ? "border-danger" : "border-ink/20"
           } ${className}`}
           {...props}
         />
@@ -38,7 +41,7 @@ export function Field({ label, error, id, className = "", type, ...props }: Fiel
             onClick={() => setVisible((v) => !v)}
             aria-label={visible ? "Masquer le mot de passe" : "Afficher le mot de passe"}
             aria-pressed={visible}
-            className="absolute inset-y-0 right-0 flex items-center rounded-md px-3 text-stone-500 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            className="absolute inset-y-0 right-0 flex items-center rounded-sm px-3 text-stone-600 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame"
           >
             {visible ? (
               <EyeOff className="h-5 w-5" aria-hidden="true" />
