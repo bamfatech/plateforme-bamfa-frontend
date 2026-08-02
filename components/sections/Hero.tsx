@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { FlameGlyph } from "@/components/brand/FlameGlyph";
+import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 
 import { Eyebrow } from "./Eyebrow";
@@ -25,34 +27,29 @@ export function Hero({
   imageAlt?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-gradient text-white">
-      {/* Forme organique décorative (écho à l'emblème BAMFA) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/10 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-black/10 blur-3xl"
-      />
-      {/* Voile sombre côté texte pour garantir le contraste AA */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/45 via-ink/15 to-transparent"
-      />
-      <Container className="relative grid grid-cols-1 items-center gap-12 py-20 sm:py-24 lg:grid-cols-2 lg:py-28">
-        <div>
-          {eyebrow && <Eyebrow tone="light">{eyebrow}</Eyebrow>}
-          <h1 className="mt-4 font-heading text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-          {subtitle && <p className="mt-6 max-w-xl text-lg text-white/90">{subtitle}</p>}
+    <section className="border-b border-stone-300 bg-paper">
+      <Container className="grid grid-cols-1 items-end gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:gap-12 lg:py-28">
+        <div className="lg:col-span-7">
+          {eyebrow && (
+            <div className="flex items-center gap-3">
+              <FlameGlyph className="h-5 w-5 text-flame" />
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </div>
+          )}
+          <Reveal>
+            <h1 className="mt-6 font-heading text-5xl font-semibold leading-[0.98] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+              {title}
+            </h1>
+          </Reveal>
+          {subtitle && (
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-600">{subtitle}</p>
+          )}
           {(primaryCta || secondaryCta) && (
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-5">
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex h-12 items-center rounded-md bg-white px-6 font-medium text-primary-700 shadow-sm transition hover:bg-white/90"
+                  className="inline-flex h-12 items-center rounded-sm bg-ink px-7 font-medium text-paper transition-colors hover:bg-ember focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
                 >
                   {primaryCta.label}
                 </Link>
@@ -60,24 +57,26 @@ export function Hero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex h-12 items-center rounded-md border border-white/70 px-6 font-medium text-white transition hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-sm font-medium text-flame-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame"
                 >
-                  {secondaryCta.label}
+                  {secondaryCta.label} <span aria-hidden="true">→</span>
                 </Link>
               )}
             </div>
           )}
         </div>
         {imageSrc && (
-          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[2rem] ring-8 ring-white/20">
-            <Image
-              src={imageSrc}
-              alt={imageAlt ?? ""}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-stone-300">
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? ""}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
           </div>
         )}
       </Container>
