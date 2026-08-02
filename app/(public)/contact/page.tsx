@@ -12,7 +12,12 @@ export const metadata = {
 };
 
 const coordinates = [
-  { icon: Mail, label: "E-mail", value: contact.coordinates.email, href: `mailto:${contact.coordinates.email}` },
+  {
+    icon: Mail,
+    label: "E-mail",
+    value: contact.coordinates.email,
+    href: `mailto:${contact.coordinates.email}`,
+  },
   { icon: Phone, label: "Téléphone", value: contact.coordinates.phone },
   { icon: MapPin, label: "Adresse", value: contact.coordinates.address },
 ];
@@ -22,48 +27,38 @@ export default function ContactPage() {
     <>
       <PageHeader title={contact.header.title} intro={contact.header.intro} />
       <Section>
-        <Container>
-          <div className="grid overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm lg:grid-cols-5">
-            {/* Panneau dégradé */}
-            <div className="relative overflow-hidden bg-brand-gradient p-8 text-white sm:p-10 lg:col-span-2">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl"
-              />
-              {/* Voile sombre pour garantir le contraste AA du texte blanc */}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-ink/20" />
-              <h2 className="relative font-heading text-2xl font-bold">{contact.panel.title}</h2>
-              <p className="relative mt-3 text-white/90">{contact.panel.text}</p>
-              <ul className="relative mt-8 space-y-5">
-                {coordinates.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <li key={item.label} className="flex items-center gap-3">
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/15">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <div className="text-xs uppercase tracking-wide text-white/85">
-                          {item.label}
-                        </div>
-                        {item.href ? (
-                          <a href={item.href} className="hover:underline">
-                            {item.value}
-                          </a>
-                        ) : (
-                          <span>{item.value}</span>
-                        )}
+        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 className="font-heading text-3xl font-semibold tracking-tight text-ink">
+              {contact.panel.title}
+            </h2>
+            <p className="mt-3 max-w-md leading-relaxed text-stone-600">{contact.panel.text}</p>
+            <ul className="mt-10 divide-y divide-stone-300 border-y border-stone-300">
+              {coordinates.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li key={item.label} className="flex items-start gap-4 py-4">
+                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-flame-ink" aria-hidden="true" />
+                    <div>
+                      <div className="font-mono text-xs uppercase tracking-[0.15em] text-stone-600">
+                        {item.label}
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+                      {item.href ? (
+                        <a href={item.href} className="text-ink underline-offset-4 hover:underline">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span className="text-ink">{item.value}</span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
-            {/* Formulaire */}
-            <div className="p-8 sm:p-10 lg:col-span-3">
-              <ContactForm />
-            </div>
+          <div>
+            <ContactForm />
           </div>
         </Container>
       </Section>

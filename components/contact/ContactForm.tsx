@@ -59,8 +59,11 @@ export function ContactForm() {
         value={values.subject}
         onChange={(e) => set("subject", e.target.value)}
       />
-      <div className="flex flex-col gap-1">
-        <label htmlFor="message" className="text-sm font-medium text-ink">
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="message"
+          className="font-mono text-xs uppercase tracking-[0.15em] text-stone-600"
+        >
           Message
         </label>
         <textarea
@@ -70,8 +73,8 @@ export function ContactForm() {
           onChange={(e) => set("message", e.target.value)}
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className={`rounded-md border px-3 py-2 outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
-            errors.message ? "border-danger" : "border-stone-300"
+          className={`rounded-sm border bg-transparent px-3 py-2 text-ink outline-none focus-visible:border-flame focus-visible:ring-2 focus-visible:ring-flame/40 ${
+            errors.message ? "border-danger" : "border-ink/20"
           }`}
         />
         {errors.message && (
