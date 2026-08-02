@@ -16,7 +16,7 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-stone-300 bg-paper/90 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center no-underline hover:no-underline">
           <Image src="/logo.jpg" alt="BAMFA" width={120} height={32} priority className="h-8 w-auto" />
@@ -29,7 +29,7 @@ export function Header() {
           ))}
           <NextLink
             href="/contact"
-            className="inline-flex h-9 items-center rounded-md bg-brand-gradient px-3 text-sm font-medium text-white hover:opacity-90"
+            className="inline-flex h-9 items-center rounded-sm bg-ink px-4 text-sm font-medium text-paper hover:bg-ember"
           >
             Nous soutenir
           </NextLink>
@@ -47,7 +47,7 @@ export function Header() {
         </button>
       </Container>
       {open && (
-        <nav aria-label="Navigation mobile" className="border-t border-stone-200 bg-white md:hidden">
+        <nav aria-label="Navigation mobile" className="border-t border-stone-300 bg-paper md:hidden">
           <Container className="flex flex-col gap-3 py-4">
             {NAV.map((item) => (
               <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
@@ -56,7 +56,7 @@ export function Header() {
             ))}
             <NextLink
               href="/contact"
-              className="inline-flex h-9 items-center rounded-md bg-brand-gradient px-3 text-sm font-medium text-white hover:opacity-90"
+              className="inline-flex h-9 items-center rounded-sm bg-ink px-4 text-sm font-medium text-paper hover:bg-ember"
               onClick={() => setOpen(false)}
             >
               Nous soutenir

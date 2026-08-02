@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import type { ComponentType } from "react";
 
@@ -33,10 +34,13 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <span aria-hidden="true" className="h-7 w-7 rounded-lg bg-brand-gradient" />
-              <span className="font-heading text-xl font-bold text-white">BAMFA</span>
-            </div>
+            <Image
+              src="/logo.jpg"
+              alt="BAMFA"
+              width={132}
+              height={35}
+              className="h-9 w-auto rounded-sm bg-white/95 px-2 py-1"
+            />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-stone-400">
               Le réseau des alumni Mastercard Foundation au Bénin : fédérer, accompagner et
               valoriser pour multiplier l'impact.
@@ -59,7 +63,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Découvrir">
-            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-paper">
               Découvrir
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
@@ -74,7 +78,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Plateformes partenaires">
-            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-paper">
               Plateformes
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
@@ -94,7 +98,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+            <h2 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-paper">
               Contact
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-stone-400">
@@ -106,7 +110,7 @@ export function Footer() {
               </li>
               <li>Cotonou, Bénin</li>
               <li>
-                <Link href="/contact" className="text-primary-400 transition hover:text-primary-300">
+                <Link href="/contact" className="text-gold transition hover:text-paper">
                   Nous écrire →
                 </Link>
               </li>
