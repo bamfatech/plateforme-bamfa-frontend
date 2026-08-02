@@ -26,10 +26,10 @@ export function Topbar({ user }: { user: User }) {
   const role = user.is_superuser ? "Administrateur" : user.roles[0] ?? "Membre";
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-stone-200 bg-white px-6">
+    <header className="flex h-16 items-center justify-between border-b border-stone-300 bg-paper px-6">
       <div>
         <p className="text-sm font-medium text-ink">{displayName}</p>
-        <p className="text-xs text-stone-500">{role}</p>
+        <p className="font-mono text-xs uppercase tracking-[0.12em] text-stone-500">{role}</p>
       </div>
       <Button
         variant="secondary"

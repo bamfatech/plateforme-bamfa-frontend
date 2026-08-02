@@ -18,8 +18,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-cream">
-        <Spinner className="h-8 w-8 text-primary-700" />
+      <div className="flex min-h-screen items-center justify-center bg-paper">
+        <Spinner className="h-8 w-8 text-flame-ink" />
       </div>
     );
   }
@@ -27,11 +27,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   if (!isAuthenticated || !user) return null;
 
   return (
-    <div className="flex min-h-screen bg-cream">
+    <div className="flex min-h-screen bg-paper">
       <Sidebar user={user} />
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar user={user} />
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex-1 p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );
