@@ -1,19 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Couleurs héritées conservées (pages non encore refondues — DA-2/DA-3) */
-  --color-primary-50: #fef3ec;
-  --color-primary-100: #fce0ce;
-  --color-primary-200: #f9c09e;
-  --color-primary-300: #f59c6b;
-  --color-primary-400: #f4813f;
-  --color-primary-500: #f26522;
-  --color-primary-600: #da5312;
-  --color-primary-700: #b5410c;
-  --color-primary-800: #8f340b;
-  --color-primary-900: #6e2809;
   --color-red-brand: #e11b22;
-  --color-cream: #faf6f0;
 
   /* Palette éditoriale « La Revue » */
   --color-ink: #14130f;

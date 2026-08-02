@@ -28,7 +28,7 @@ export function Avatar({
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-gradient font-heading text-lg font-semibold text-white ${className}`}
+      className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-ink font-heading text-lg font-semibold text-paper ${className}`}
     >
       {initials}
     </span>
