@@ -9,9 +9,9 @@ export function Eyebrow({
   tone?: "brand" | "light";
   className?: string;
 }) {
-  const color = tone === "light" ? "text-white/80" : "text-primary-700";
+  const color = tone === "light" ? "text-paper/75" : "text-flame-ink";
   return (
-    <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${color} ${className}`}>
+    <p className={`font-mono text-xs uppercase tracking-[0.22em] ${color} ${className}`}>
       {children}
     </p>
   );
