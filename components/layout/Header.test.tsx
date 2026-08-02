@@ -1,7 +1,11 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Header } from "./Header";
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+}));
 
 describe("Header", () => {
   it("affiche le logo et la navigation principale realignee", () => {
