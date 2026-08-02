@@ -2,7 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes } from "react";
 
 import { Spinner } from "./Spinner";
 
-type Variant = "primary" | "secondary" | "ghost" | "gradient";
+type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
@@ -12,7 +12,6 @@ const variants: Record<Variant, string> = {
   primary: "bg-ink text-paper hover:bg-ember",
   secondary: "border border-ink/25 text-ink hover:border-ink hover:bg-ink/5",
   ghost: "text-flame-ink hover:bg-flame/10",
-  gradient: "bg-brand-gradient text-white hover:opacity-90",
 };
 
 const sizes: Record<Size, string> = {

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-red-brand: #e11b22;
-
   /* Palette éditoriale « La Revue » */
   --color-ink: #14130f;
   --color-paper: #f6f2ea;
@@ -46,8 +44,3 @@
   }
 }
 
-@layer utilities {
-  .bg-brand-gradient {
-    background-image: linear-gradient(135deg, var(--color-red-brand), var(--color-flame), var(--color-gold));
-  }
-}
