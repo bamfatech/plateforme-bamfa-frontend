@@ -9,7 +9,7 @@ export function Testimonials({
   eyebrow,
   title,
   items,
-  className = "bg-cream",
+  className = "",
 }: {
   eyebrow: string;
   title: string;
@@ -20,18 +20,21 @@ export function Testimonials({
     <Section className={className}>
       <Container>
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">{title}</h2>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+          {title}
+        </h2>
+        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-stone-300 bg-stone-300 md:grid-cols-3">
           {items.map((item) => (
-            <figure
-              key={item.name}
-              className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
-            >
-              <Quote className="h-8 w-8 text-primary-300" aria-hidden="true" />
-              <blockquote className="mt-4 flex-1 text-stone-700">{item.quote}</blockquote>
-              <figcaption className="mt-5">
-                <div className="font-heading font-semibold text-ink">{item.name}</div>
-                <div className="text-sm text-stone-500">{item.role}</div>
+            <figure key={item.name} className="flex flex-col bg-paper p-8">
+              <Quote className="h-7 w-7 text-flame" aria-hidden="true" />
+              <blockquote className="mt-5 flex-1 font-heading text-xl leading-snug text-ink">
+                {item.quote}
+              </blockquote>
+              <figcaption className="mt-6 border-t border-stone-300 pt-4">
+                <div className="font-medium text-ink">{item.name}</div>
+                <div className="mt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-stone-600">
+                  {item.role}
+                </div>
               </figcaption>
             </figure>
           ))}
