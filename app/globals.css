@@ -8,8 +8,13 @@
   --color-flame-ink: #b5390f;
   --color-gold: #f2a93b;
   --color-ember: #7a1e10;
+  --color-stone-100: #efeae0;
+  --color-stone-200: #e3ddd1;
   --color-stone-300: #d8d2c6;
+  --color-stone-400: #b3aa9c;
+  --color-stone-500: #8a8175;
   --color-stone-600: #6b655b;
+  --color-stone-700: #4b463e;
 
   /* Sémantique (inchangée) */
   --color-success: #1e9e5a;
