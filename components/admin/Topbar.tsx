@@ -6,6 +6,7 @@ import { LogOut } from "lucide-react";
 import type { User } from "@/lib/auth/types";
 import { useAuth } from "@/lib/auth/useAuth";
 import { Button } from "@/components/ui/Button";
+import { monoLabel } from "@/components/ui/styles";
 
 export function Topbar({ user }: { user: User }) {
   const router = useRouter();
@@ -29,7 +30,7 @@ export function Topbar({ user }: { user: User }) {
     <header className="flex h-16 items-center justify-between border-b border-stone-300 bg-paper px-6">
       <div>
         <p className="text-sm font-medium text-ink">{displayName}</p>
-        <p className="font-mono text-xs uppercase tracking-[0.12em] text-stone-500">{role}</p>
+        <p className={`${monoLabel} text-stone-600`}>{role}</p>
       </div>
       <Button
         variant="secondary"

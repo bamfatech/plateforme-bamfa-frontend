@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/lib/auth/useAuth";
 import { Badge } from "@/components/ui/Badge";
+import { monoLabel } from "@/components/ui/styles";
 
 const STATS = [
   { label: "Membres", hint: "Annuaire alumni" },
@@ -34,11 +35,11 @@ export default function DashboardPage() {
       <div className="grid gap-px overflow-hidden rounded-sm border border-stone-300 bg-stone-300 sm:grid-cols-2 lg:grid-cols-3">
         {STATS.map((stat) => (
           <div key={stat.label} className="bg-paper p-6">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-stone-600">
+            <p className={`${monoLabel} text-stone-600`}>
               {stat.label}
             </p>
             <p className="mt-3 font-heading text-4xl font-semibold text-stone-300">—</p>
-            <p className="mt-1 text-xs text-stone-500">{stat.hint} · à venir</p>
+            <p className="mt-1 text-xs text-stone-600">{stat.hint} · à venir</p>
           </div>
         ))}
       </div>

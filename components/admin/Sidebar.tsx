@@ -58,7 +58,7 @@ export function Sidebar({ user }: { user: User }) {
           );
         })}
       </nav>
-      <div className="border-t border-stone-300 p-4 text-xs text-stone-500">
+      <div className="border-t border-stone-300 p-4 text-xs text-stone-600">
         Connecté : <span>{user.email}</span>
       </div>
     </aside>
