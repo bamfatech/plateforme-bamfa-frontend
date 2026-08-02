@@ -12,15 +12,17 @@ export function CallToAction({
   cta: { label: string; href: string };
 }) {
   return (
-    <section className="bg-ink text-white">
-      <Container className="flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
+    <section className="bg-ink text-paper">
+      <Container className="flex flex-col items-start gap-8 py-16 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="font-heading text-2xl font-bold">{title}</h2>
-          {description && <p className="mt-2 text-white/80">{description}</p>}
+          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+            {title}
+          </h2>
+          {description && <p className="mt-3 max-w-xl text-paper/75">{description}</p>}
         </div>
         <Link
           href={cta.href}
-          className="inline-flex h-12 shrink-0 items-center rounded-md bg-brand-gradient px-6 font-medium text-white hover:opacity-90"
+          className="inline-flex h-12 shrink-0 items-center rounded-sm bg-paper px-7 font-medium text-ink transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
         >
           {cta.label}
         </Link>
