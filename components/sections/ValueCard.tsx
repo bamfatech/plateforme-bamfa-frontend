@@ -13,10 +13,10 @@ export function ValueCard({
 }) {
   return (
     <Card className="flex gap-4">
-      <Icon className="h-6 w-6 shrink-0 text-primary-600" aria-hidden="true" />
+      <Icon className="h-6 w-6 shrink-0 text-flame-ink" aria-hidden="true" />
       <div>
-        <h3 className="font-heading font-semibold text-ink">{title}</h3>
-        <p className="mt-1 text-sm text-stone-600">{description}</p>
+        <h3 className="font-heading text-lg font-semibold text-ink">{title}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-stone-600">{description}</p>
       </div>
     </Card>
   );

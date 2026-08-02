@@ -28,11 +28,13 @@ export function SplitSection({
       <Container className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className={imageSide === "left" ? "lg:order-2" : undefined}>
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-          <h2 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">{title}</h2>
-          <div className="mt-5 space-y-4 text-lg leading-relaxed text-stone-600">{children}</div>
+          <h2 className="mt-4 font-heading text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
+            {title}
+          </h2>
+          <div className="mt-6 space-y-4 text-lg leading-relaxed text-stone-600">{children}</div>
         </div>
         <div
-          className={`relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm ${
+          className={`relative aspect-[4/3] overflow-hidden rounded-sm border border-stone-300 ${
             imageSide === "left" ? "lg:order-1" : ""
           }`}
         >
