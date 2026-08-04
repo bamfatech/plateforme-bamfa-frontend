@@ -24,13 +24,20 @@ export function ImportReportCard({ report }: { report: ImportReport }) {
         </p>
       </div>
 
-      {report.strict && (
+      {report.strict && report.rows_failed > 0 && (
         <Alert variant="warning">
           Mode « tout ou rien » : l'import a été interrompu à la première
           ligne invalide. Aucun profil n'a été créé ni mis à jour — les
           compteurs ci-dessous ne portent que sur les{" "}
           {report.rows_total} ligne(s) lue(s) avant l'interruption, pas sur le
           fichier entier.
+        </Alert>
+      )}
+
+      {report.strict && report.rows_failed === 0 && (
+        <Alert variant="info">
+          Mode « tout ou rien » : le fichier était entièrement valide, les{" "}
+          {report.rows_total} ligne(s) ont été appliquées.
         </Alert>
       )}
 

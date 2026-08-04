@@ -198,4 +198,45 @@ describe("ImportsView", () => {
       screen.getByText(/aucun profil n'a été créé ni mis à jour/i),
     ).toBeInTheDocument();
   });
+
+  it("n'affirme pas que l'import a été interrompu quand le mode strict a réussi", async () => {
+    // I2 : un import strict d'un fichier entièrement valide ne lève jamais
+    // _StrictAbort — le rapport porte alors des compteurs d'écriture normaux
+    // (rows_failed: 0). L'alerte d'interruption ne doit pas apparaître à
+    // côté de « 3 créé(s) », ce qui contredirait directement l'affichage.
+    const RAPPORT_STRICT_REUSSI = {
+      id: 3,
+      filename: "alumni-strict-ok.csv",
+      strict: true,
+      created_at: "2026-08-03T10:00:00Z",
+      uploaded_by_email: "administrateur@bamfa.org",
+      rows_total: 3,
+      rows_created: 3,
+      rows_updated: 0,
+      rows_skipped: 0,
+      rows_failed: 0,
+      errors: [],
+    };
+    mock
+      .onGet("/alumni/admin/imports/")
+      .reply(200, { count: 0, next: null, previous: null, results: [] });
+    mock.onPost("/alumni/admin/imports/").reply(201, RAPPORT_STRICT_REUSSI);
+    renderWithClient(<ImportsView />);
+
+    await userEvent.upload(screen.getByLabelText(/fichier csv/i), fichier());
+    await userEvent.click(screen.getByLabelText(/tout ou rien/i));
+    await userEvent.click(screen.getByRole("button", { name: /importer/i }));
+
+    await waitFor(() => expect(mock.history.post).toHaveLength(1));
+    expect(await screen.findByText("3 créé(s)")).toBeInTheDocument();
+    expect(
+      screen.queryByText(/interrompu à la première ligne invalide/i),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/aucun profil n'a été créé ni mis à jour/i),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByText(/le fichier était entièrement valide/i),
+    ).toBeInTheDocument();
+  });
 });
