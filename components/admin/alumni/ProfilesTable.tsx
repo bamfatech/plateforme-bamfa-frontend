@@ -87,7 +87,7 @@ export function ProfilesTable({ profiles, onAction, pending }: Props) {
                     Archiver
                   </Button>
                 )}
-                {!profile.has_account && (
+                {!profile.has_account && profile.status === "actif" && (
                   <Button
                     type="button"
                     variant="ghost"

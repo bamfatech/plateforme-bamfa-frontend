@@ -134,6 +134,22 @@ describe("ProfilesView", () => {
     expect(screen.queryByRole("button", { name: "Inviter" })).not.toBeInTheDocument();
   });
 
+  it("n'offre pas d'inviter un profil suspendu ou archivé, même sans compte", async () => {
+    // C1 : un profil suspendu ou archivé ne doit pas pouvoir être invité —
+    // sans quoi l'administrateur pourrait activer un accès malgré le statut.
+    mock.onGet("/alumni/admin/profils/").reply(
+      200,
+      reponse([
+        { ...PROFIL, status: "archive", status_display: "Archivé" },
+      ]),
+    );
+
+    renderWithClient(<ProfilesView />);
+    await screen.findByText("Doe Awa");
+
+    expect(screen.queryByRole("button", { name: "Inviter" })).not.toBeInTheDocument();
+  });
+
   it("envoie le filtre de statut choisi", async () => {
     mock.onGet("/alumni/admin/profils/").reply(200, reponse([PROFIL]));
     renderWithClient(<ProfilesView />);
