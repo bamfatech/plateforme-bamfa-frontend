@@ -1,3 +1,4 @@
+import { Alert } from "@/components/ui/Alert";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@/components/ui/Table";
 import { cardShell, monoLabel } from "@/components/ui/styles";
 import type { ImportReport } from "@/lib/alumni/types";
@@ -22,6 +23,16 @@ export function ImportReportCard({ report }: { report: ImportReport }) {
           {report.strict && " · mode strict"}
         </p>
       </div>
+
+      {report.strict && (
+        <Alert variant="warning">
+          Mode « tout ou rien » : l'import a été interrompu à la première
+          ligne invalide. Aucun profil n'a été créé ni mis à jour — les
+          compteurs ci-dessous ne portent que sur les{" "}
+          {report.rows_total} ligne(s) lue(s) avant l'interruption, pas sur le
+          fichier entier.
+        </Alert>
+      )}
 
       <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
         {compteurs.map((compteur) => (

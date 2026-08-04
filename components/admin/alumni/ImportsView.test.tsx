@@ -41,6 +41,45 @@ function fichier() {
   );
 }
 
+// Fixture du régime strict : les compteurs d'écriture sont figés à 0 (tout a
+// été annulé) et rows_total ne couvre que ce qui a été lu avant l'abandon —
+// ici 2 lignes — alors que le fichier déposé en contient 4. L'écart est
+// volontaire : il matérialise que le compteur ne décrit pas le fichier entier.
+const RAPPORT_STRICT = {
+  id: 2,
+  filename: "alumni-strict.csv",
+  strict: true,
+  created_at: "2026-08-03T09:00:00Z",
+  uploaded_by_email: "administrateur@bamfa.org",
+  rows_total: 2,
+  rows_created: 0,
+  rows_updated: 0,
+  rows_skipped: 0,
+  rows_failed: 1,
+  errors: [
+    {
+      id: 2,
+      line_number: 2,
+      raw_row: { email: "pas-un-email", nom: "Kone" },
+      message: "Adresse e-mail invalide ou absente.",
+    },
+  ],
+};
+
+function fichierVolumineux() {
+  return new File(
+    [
+      "email,nom,prenom,promotion\n" +
+        "awa@example.org,Doe,Awa,2018\n" +
+        "pas-un-email,Kone,Aya,2019\n" +
+        "traore@example.org,Traore,Ali,2020\n" +
+        "diallo@example.org,Diallo,Awa,2021\n",
+    ],
+    "alumni-strict.csv",
+    { type: "text/csv" },
+  );
+}
+
 describe("ImportsView", () => {
   it("affiche l'historique des imports", async () => {
     mock
@@ -128,6 +167,35 @@ describe("ImportsView", () => {
 
     expect(
       await screen.findByText("Colonnes requises absentes : promotion."),
+    ).toBeInTheDocument();
+    // Un 400 sur le fichier ne crée aucun rapport : la section de résultat ne
+    // doit pas apparaître, sans quoi le 400 serait confondu avec un rapport.
+    expect(
+      screen.queryByText("Résultat du dernier import"),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/en erreur$/)).not.toBeInTheDocument();
+  });
+
+  it("explique le mode strict quand l'import a été annulé", async () => {
+    mock
+      .onGet("/alumni/admin/imports/")
+      .reply(200, { count: 0, next: null, previous: null, results: [] });
+    mock.onPost("/alumni/admin/imports/").reply(201, RAPPORT_STRICT);
+    renderWithClient(<ImportsView />);
+
+    await userEvent.upload(
+      screen.getByLabelText(/fichier csv/i),
+      fichierVolumineux(),
+    );
+    await userEvent.click(screen.getByLabelText(/tout ou rien/i));
+    await userEvent.click(screen.getByRole("button", { name: /importer/i }));
+
+    await waitFor(() => expect(mock.history.post).toHaveLength(1));
+    expect(
+      await screen.findByText(/interrompu à la première ligne invalide/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/aucun profil n'a été créé ni mis à jour/i),
     ).toBeInTheDocument();
   });
 });
