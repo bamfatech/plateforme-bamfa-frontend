@@ -43,6 +43,10 @@ export function useProfileAction() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["alumni", "profils"] });
+      // suspendre/archiver changent exactement le statut que l'annuaire
+      // public filtre (`in_directory()`) : une vue annuaire montée en
+      // parallèle doit se rafraîchir, pas seulement la liste d'admin.
+      queryClient.invalidateQueries({ queryKey: ["alumni", "annuaire"] });
     },
   });
 }

@@ -66,10 +66,16 @@ export interface Registration {
   country: string;
   phone: string;
   city: string;
+  university: string;
+  mcf_program: string;
   sector: string;
   sector_display: string;
   current_position: string;
   organization: string;
+  bio: string;
+  linkedin_url: string;
+  birth_date: string | null;
+  gender: string;
   directory_consent: boolean;
   status: RegistrationStatus;
   status_display: string;
@@ -107,16 +113,29 @@ export interface DirectoryFilters {
   secteur?: string;
   pays?: string;
   page?: number;
+  page_size?: number;
+  ordering?: string;
 }
 
 export interface AdminProfileFilters extends DirectoryFilters {
   statut?: string;
-  consentement?: string;
-  a_un_compte?: string;
+  /** Filtre booléen côté API (`django_filters.BooleanFilter`) : `cleanParams`
+   *  ne retire que `undefined`/`null`/`""`, jamais `false` — qui est une
+   *  valeur de filtre à part entière ici. Un appelant qui construit ce
+   *  filtre depuis un `<select>` (chaînes `"true"`/`"false"`/`""`) doit donc
+   *  convertir explicitement en booléen (ou `undefined`) à la frontière,
+   *  jamais transmettre la chaîne brute. */
+  consentement?: boolean;
+  /** Même remarque qu'au-dessus : booléen côté API, conversion à la
+   *  frontière requise pour tout appelant piloté par un `<select>`. */
+  a_un_compte?: boolean;
 }
 
 export interface RegistrationFilters {
   search?: string;
   statut?: string;
+  promotion?: string;
   page?: number;
+  page_size?: number;
+  ordering?: string;
 }

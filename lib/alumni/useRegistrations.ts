@@ -40,6 +40,14 @@ function useReviewMutation(action: "approuver" | "rejeter") {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["alumni", "inscriptions"] });
       queryClient.invalidateQueries({ queryKey: ["alumni", "profils"] });
+      // Une approbation crée un profil `actif` : s'il porte déjà le
+      // consentement à la publication, il peut apparaître immédiatement
+      // dans l'annuaire public (`in_directory()` ne filtre que statut +
+      // consentement). Un rejet, lui, ne crée jamais de profil — rien à
+      // rafraîchir côté annuaire.
+      if (action === "approuver") {
+        queryClient.invalidateQueries({ queryKey: ["alumni", "annuaire"] });
+      }
     },
   });
 }
