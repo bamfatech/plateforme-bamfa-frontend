@@ -104,4 +104,29 @@ describe("RegistrationForm", () => {
       ).toBeInTheDocument(),
     );
   });
+
+  it("affiche via l'alerte globale une erreur API sur un champ sans équivalent dans le formulaire", async () => {
+    mock.onPost("/alumni/inscriptions/").reply(400, {
+      error: {
+        code: "invalid",
+        message: "Requête invalide.",
+        details: {
+          directory_consent: ["Ce champ ne peut être laissé vide."],
+        },
+      },
+    });
+    renderWithClient(<RegistrationForm />);
+    await remplirLeMinimum();
+
+    await userEvent.click(screen.getByRole("button", { name: /envoyer/i }));
+
+    await waitFor(() =>
+      expect(
+        screen.getByText("Ce champ ne peut être laissé vide."),
+      ).toBeInTheDocument(),
+    );
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Ce champ ne peut être laissé vide.",
+    );
+  });
 });

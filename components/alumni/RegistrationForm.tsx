@@ -37,10 +37,14 @@ function extraireErreursApi(erreur: unknown): { champs: Erreurs; global: string 
       ?.error?.details;
     if (details) {
       const champs: Erreurs = {};
+      const messagesNonRattaches: string[] = [];
       for (const [champ, messages] of Object.entries(details)) {
         if (champ in VIDE) champs[champ as keyof Valeurs] = messages[0];
+        else messagesNonRattaches.push(...messages);
       }
-      if (Object.keys(champs).length > 0) return { champs, global: "" };
+      if (Object.keys(champs).length > 0 || messagesNonRattaches.length > 0) {
+        return { champs, global: messagesNonRattaches.join(" ") };
+      }
     }
   }
   return {
@@ -239,7 +243,7 @@ export function RegistrationForm() {
             <label htmlFor="directory-consent">
               J'accepte de figurer dans l'annuaire public des alumni BAMFA.
             </label>{" "}
-            <span id="directory-consent-hint" className="text-stone-500">
+            <span id="directory-consent-hint" className="text-stone-600">
               Mon adresse e-mail et mon téléphone ne seront jamais publiés. Ce
               choix est révocable à tout moment.
             </span>
