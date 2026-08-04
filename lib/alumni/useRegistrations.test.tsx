@@ -120,13 +120,23 @@ describe("useRejectRegistration", () => {
     mock
       .onGet("/alumni/annuaire/")
       .reply(200, { count: 0, next: null, previous: null, results: [] });
+    mock
+      .onGet("/alumni/admin/inscriptions/")
+      .reply(200, { count: 0, next: null, previous: null, results: [] });
     mock.onPost("/alumni/admin/inscriptions/3/rejeter/").reply(200, { id: 3 });
 
     const { result: directory } = renderHook(() => useDirectory({}), { wrapper });
+    const { result: inscriptions } = renderHook(() => useRegistrations({}), {
+      wrapper,
+    });
     await waitFor(() => expect(directory.current.isSuccess).toBe(true));
+    await waitFor(() => expect(inscriptions.current.isSuccess).toBe(true));
 
     const appelsAnnuaireAvant = mock.history.get.filter(
       (r) => r.url === "/alumni/annuaire/",
+    ).length;
+    const appelsInscriptionsAvant = mock.history.get.filter(
+      (r) => r.url === "/alumni/admin/inscriptions/",
     ).length;
 
     const { result: reject } = renderHook(() => useRejectRegistration(), {
@@ -134,6 +144,19 @@ describe("useRejectRegistration", () => {
     });
     reject.current.mutate({ id: 3, motif: "Incomplet" });
     await waitFor(() => expect(reject.current.isSuccess).toBe(true));
+
+    // Barrière : un rejet invalide toujours `inscriptions` (voir
+    // `useReviewMutation`), donc son refetch se termine forcément — y
+    // compris si celui de `annuaire` était déclenché à tort au même instant.
+    // Sans attendre cette barrière, l'assertion suivante passerait qu'il y
+    // ait eu invalidation fautive ou non : c'est ce qui rendait ce test
+    // incapable d'échouer.
+    await waitFor(() =>
+      expect(
+        mock.history.get.filter((r) => r.url === "/alumni/admin/inscriptions/")
+          .length,
+      ).toBeGreaterThan(appelsInscriptionsAvant),
+    );
 
     expect(
       mock.history.get.filter((r) => r.url === "/alumni/annuaire/").length,
