@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 const NAV = [
   { href: "/", label: "Accueil" },
   { href: "/a-propos", label: "À propos" },
+  { href: "/alumni", label: "Alumni" },
   { href: "/contact", label: "Contact" },
 ];
 

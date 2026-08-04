@@ -26,4 +26,13 @@ describe("Header", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "true");
     expect(screen.getByRole("navigation", { name: "Navigation mobile" })).toBeInTheDocument();
   });
+
+  it("propose l'entrée Alumni", () => {
+    render(<Header />);
+
+    expect(screen.getByRole("link", { name: "Alumni" })).toHaveAttribute(
+      "href",
+      "/alumni",
+    );
+  });
 });
