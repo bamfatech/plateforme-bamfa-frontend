@@ -2,20 +2,17 @@
 
 import { useRef, useState } from "react";
 
-import { ApiError } from "@/lib/api/client";
+import { apiFieldError } from "@/lib/api/errors";
 import type { ImportReport } from "@/lib/alumni/types";
 import { useCreateImport } from "@/lib/alumni/useImports";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 
 function messageErreur(erreur: unknown): string {
-  if (erreur instanceof ApiError) {
-    const details = (erreur.data as { error?: { details?: Record<string, string[]> } })
-      ?.error?.details;
-    const messages = details?.fichier;
-    if (messages?.length) return messages[0];
-  }
-  return "L'import a échoué. Vérifiez le fichier et réessayez.";
+  return (
+    apiFieldError(erreur, "fichier") ??
+    "L'import a échoué. Vérifiez le fichier et réessayez."
+  );
 }
 
 export function ImportForm({

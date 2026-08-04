@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { ApiError, api } from "@/lib/api/client";
+import { api } from "@/lib/api/client";
+import { apiFieldError } from "@/lib/api/errors";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { Field } from "@/components/ui/Field";
@@ -20,15 +21,9 @@ interface ReponseActivation {
   detail: string;
 }
 
-/** Extrait le premier message d'un champ du format d'erreur normalisé de l'API. */
+/** Message d'un champ du format d'erreur normalisé de l'API, ou le repli. */
 function messageApi(erreur: unknown, champ: string, repli: string): string {
-  if (erreur instanceof ApiError) {
-    const details = (erreur.data as { error?: { details?: Record<string, string[]> } })
-      ?.error?.details;
-    const messages = details?.[champ];
-    if (messages?.length) return messages[0];
-  }
-  return repli;
+  return apiFieldError(erreur, champ) ?? repli;
 }
 
 export function ActivationForm({ token }: { token: string | null }) {

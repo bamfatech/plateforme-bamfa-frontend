@@ -3,7 +3,8 @@
 import { useState } from "react";
 
 import { GENDER_OPTIONS, PROMOTION_MIN, SECTOR_OPTIONS, promotionMax } from "@/content/alumni";
-import { ApiError, api } from "@/lib/api/client";
+import { api } from "@/lib/api/client";
+import { apiFieldErrors } from "@/lib/api/errors";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { Field } from "@/components/ui/Field";
@@ -32,19 +33,16 @@ type Valeurs = typeof VIDE;
 type Erreurs = Partial<Record<keyof Valeurs, string>>;
 
 function extraireErreursApi(erreur: unknown): { champs: Erreurs; global: string } {
-  if (erreur instanceof ApiError) {
-    const details = (erreur.data as { error?: { details?: Record<string, string[]> } })
-      ?.error?.details;
-    if (details) {
-      const champs: Erreurs = {};
-      const messagesNonRattaches: string[] = [];
-      for (const [champ, messages] of Object.entries(details)) {
-        if (champ in VIDE) champs[champ as keyof Valeurs] = messages[0];
-        else messagesNonRattaches.push(...messages);
-      }
-      if (Object.keys(champs).length > 0 || messagesNonRattaches.length > 0) {
-        return { champs, global: messagesNonRattaches.join(" ") };
-      }
+  const details = apiFieldErrors(erreur);
+  if (details) {
+    const champs: Erreurs = {};
+    const messagesNonRattaches: string[] = [];
+    for (const [champ, message] of Object.entries(details)) {
+      if (champ in VIDE) champs[champ as keyof Valeurs] = message;
+      else messagesNonRattaches.push(message);
+    }
+    if (Object.keys(champs).length > 0 || messagesNonRattaches.length > 0) {
+      return { champs, global: messagesNonRattaches.join(" ") };
     }
   }
   return {
