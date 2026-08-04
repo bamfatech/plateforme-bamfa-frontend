@@ -73,4 +73,17 @@ describe("EspacePage", () => {
       await screen.findByText(/aucun profil alumni n'est rattaché/i),
     ).toBeInTheDocument();
   });
+
+  it("distingue une vraie panne d'un compte sans profil (pas d'invitation à s'inscrire)", async () => {
+    mock.onGet("/alumni/moi/").reply(500);
+
+    renderWithClient(<EspacePage />);
+
+    expect(
+      await screen.findByText(/une erreur est survenue/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/aucun profil alumni n'est rattaché/i),
+    ).not.toBeInTheDocument();
+  });
 });

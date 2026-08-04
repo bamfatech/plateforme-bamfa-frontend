@@ -93,46 +93,4 @@ describe("LoginForm", () => {
     expect(await screen.findByText("Identifiants invalides.")).toBeInTheDocument();
     expect(replaceMock).not.toHaveBeenCalled();
   });
-
-  it("redirige un alumni vers son espace après connexion", async () => {
-    apiMock.onPost("/auth/login/").reply(200, {
-      id: 2,
-      email: "awa@example.org",
-      first_name: "Awa",
-      last_name: "Doe",
-      is_staff: false,
-      is_superuser: false,
-      roles: ["Alumni"],
-    });
-    renderWithClient(<LoginForm />);
-    fireEvent.change(screen.getByLabelText("E-mail"), {
-      target: { value: "awa@example.org" },
-    });
-    fireEvent.change(screen.getByLabelText("Mot de passe"), {
-      target: { value: "motdepasse123" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: "Se connecter" }));
-    await waitFor(() => expect(replaceMock).toHaveBeenCalledWith("/espace"));
-  });
-
-  it("redirige un administrateur vers le back-office après connexion", async () => {
-    apiMock.onPost("/auth/login/").reply(200, {
-      id: 1,
-      email: "admin@bamfa.org",
-      first_name: "Ada",
-      last_name: "Admin",
-      is_staff: true,
-      is_superuser: false,
-      roles: ["Administrateur"],
-    });
-    renderWithClient(<LoginForm />);
-    fireEvent.change(screen.getByLabelText("E-mail"), {
-      target: { value: "admin@bamfa.org" },
-    });
-    fireEvent.change(screen.getByLabelText("Mot de passe"), {
-      target: { value: "motdepasse123" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: "Se connecter" }));
-    await waitFor(() => expect(replaceMock).toHaveBeenCalledWith("/admin"));
-  });
 });

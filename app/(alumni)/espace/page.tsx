@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { ApiError } from "@/lib/api/client";
 import { useSelfProfile } from "@/lib/alumni/useSelfProfile";
 import { Alert } from "@/components/ui/Alert";
 import { Badge } from "@/components/ui/Badge";
@@ -11,7 +12,11 @@ import { Spinner } from "@/components/ui/Spinner";
 import { cardShell, monoLabel } from "@/components/ui/styles";
 
 export default function EspacePage() {
-  const { data: profil, isLoading, isError } = useSelfProfile();
+  const { data: profil, isLoading, isError, error } = useSelfProfile();
+
+  // Un 404 signifie « pas de profil alumni » (invitation à s'inscrire) ;
+  // toute autre erreur est une vraie panne et ne doit pas être confondue avec ce cas.
+  const profilAbsent = error instanceof ApiError && error.status === 404;
 
   return (
     <Section>
@@ -22,7 +27,7 @@ export default function EspacePage() {
           </div>
         )}
 
-        {isError && (
+        {isError && profilAbsent && (
           <Alert variant="info">
             Aucun profil alumni n'est rattaché à ce compte. Si vous êtes alumni
             de la Mastercard Foundation au Bénin,{" "}
@@ -33,6 +38,14 @@ export default function EspacePage() {
               demandez votre inscription
             </Link>
             .
+          </Alert>
+        )}
+
+        {isError && !profilAbsent && (
+          <Alert variant="danger">
+            Une erreur est survenue lors du chargement de votre profil.
+            Réessayez plus tard, ou contactez l'équipe BAMFA si le problème
+            persiste.
           </Alert>
         )}
 
