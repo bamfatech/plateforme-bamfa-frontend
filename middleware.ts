@@ -13,6 +13,9 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
+// Le matcher de Next.js est analysé à la compilation et ne peut pas être
+// dérivé de PROTECTED_PREFIXES (constante runtime) : les deux listes sont
+// à garder en cohérence manuellement quand une zone protégée est ajoutée.
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/espace/:path*"],
 };

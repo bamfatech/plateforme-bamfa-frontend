@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ApiError } from "@/lib/api/client";
+import { landingPathForUser } from "@/lib/auth/route-guard";
 import { useAuth } from "@/lib/auth/useAuth";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
@@ -13,15 +14,15 @@ type Errors = { email?: string; password?: string };
 
 export function LoginForm() {
   const router = useRouter();
-  const { isAuthenticated, login } = useAuth();
+  const { isAuthenticated, user, login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isAuthenticated) router.replace("/admin");
-  }, [isAuthenticated, router]);
+    if (isAuthenticated) router.replace(landingPathForUser(user));
+  }, [isAuthenticated, user, router]);
 
   function validate(): Errors {
     const e: Errors = {};
@@ -39,8 +40,8 @@ export function LoginForm() {
     setErrors(e);
     if (Object.keys(e).length > 0) return;
     try {
-      await login.mutateAsync({ email, password });
-      router.replace("/admin");
+      const connecte = await login.mutateAsync({ email, password });
+      router.replace(landingPathForUser(connecte));
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         setFormError("Identifiants invalides.");
