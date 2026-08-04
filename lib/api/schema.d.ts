@@ -4,6 +4,470 @@
  */
 
 export interface paths {
+    "/api/v1/alumni/admin/imports/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Dépôt d'un fichier d'alumni et consultation des rapports. */
+        get: operations["alumni_admin_imports_list"];
+        put?: never;
+        /** @description Dépôt d'un fichier d'alumni et consultation des rapports. */
+        post: operations["alumni_admin_imports_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/imports/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Dépôt d'un fichier d'alumni et consultation des rapports. */
+        get: operations["alumni_admin_imports_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/inscriptions/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description File d'attente des demandes d'inscription.
+         *
+         *     Lecture ouverte à la Secrétaire, instruction réservée à l'Administrateur.
+         */
+        get: operations["alumni_admin_inscriptions_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/inscriptions/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description File d'attente des demandes d'inscription.
+         *
+         *     Lecture ouverte à la Secrétaire, instruction réservée à l'Administrateur.
+         */
+        get: operations["alumni_admin_inscriptions_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/inscriptions/{id}/approuver/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description File d'attente des demandes d'inscription.
+         *
+         *     Lecture ouverte à la Secrétaire, instruction réservée à l'Administrateur.
+         */
+        post: operations["alumni_admin_inscriptions_approuver_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/inscriptions/{id}/rejeter/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description File d'attente des demandes d'inscription.
+         *
+         *     Lecture ouverte à la Secrétaire, instruction réservée à l'Administrateur.
+         */
+        post: operations["alumni_admin_inscriptions_rejeter_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        get: operations["alumni_admin_profils_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        get: operations["alumni_admin_profils_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        patch: operations["alumni_admin_profils_partial_update"];
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/{id}/archiver/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        post: operations["alumni_admin_profils_archiver_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/{id}/inviter/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        post: operations["alumni_admin_profils_inviter_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/{id}/reactiver/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        post: operations["alumni_admin_profils_reactiver_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/admin/profils/{id}/suspendre/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Base alumni complète : tous les statuts, e-mails inclus.
+         *
+         *     Lecture ouverte à la Secrétaire ; modification et actes de gouvernance
+         *     réservés à l'Administrateur.
+         */
+        post: operations["alumni_admin_profils_suspendre_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/annuaire/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Annuaire des alumni.
+         *
+         *     Un seul URL, deux niveaux de champs : le sérialiseur est choisi selon le
+         *     rôle de l'appelant. La *présence* dans l'annuaire est portée par
+         *     `in_directory()` — statut actif et consentement — quel que soit le niveau.
+         */
+        get: operations["alumni_annuaire_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/annuaire/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Annuaire des alumni.
+         *
+         *     Un seul URL, deux niveaux de champs : le sérialiseur est choisi selon le
+         *     rôle de l'appelant. La *présence* dans l'annuaire est portée par
+         *     `in_directory()` — statut actif et consentement — quel que soit le niveau.
+         */
+        get: operations["alumni_annuaire_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/inscriptions/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Soumission publique d'une demande d'inscription alumni. */
+        post: operations["alumni_inscriptions_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/invitation/activer/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Crée le compte de connexion à partir d'un jeton d'invitation. */
+        post: operations["alumni_invitation_activer_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/invitation/verifier/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Valide un jeton d'invitation et renvoie l'identité à préremplir. */
+        post: operations["alumni_invitation_verifier_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/alumni/moi/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Profil du titulaire du compte.
+         *
+         *     Aucune permission de niveau objet : le périmètre est porté par le
+         *     queryset (`user=request.user`), donc aucun chemin de code ne permet
+         *     d'atteindre le profil d'un autre alumni.
+         */
+        get: operations["alumni_moi_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * @description Profil du titulaire du compte.
+         *
+         *     Aucune permission de niveau objet : le périmètre est porté par le
+         *     queryset (`user=request.user`), donc aucun chemin de code ne permet
+         *     d'atteindre le profil d'un autre alumni.
+         */
+        patch: operations["alumni_moi_partial_update"];
+        trace?: never;
+    };
+    "/api/v1/auth/csrf/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["auth_csrf_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/login/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["auth_login_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/logout/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["auth_logout_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/me/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["auth_me_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/refresh/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["auth_refresh_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/health/": {
         parameters: {
             query?: never;
@@ -11,7 +475,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: operations["api_v1_health_retrieve"];
+        get: operations["health_retrieve"];
         put?: never;
         post?: never;
         delete?: never;
@@ -23,7 +487,546 @@ export interface paths {
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: never;
+    schemas: {
+        /** @description Niveau administration : tous les champs, e-mail et téléphone inclus. */
+        AdminProfile: {
+            readonly id: number;
+            /** Prénom */
+            first_name: string;
+            /** Nom */
+            last_name: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            email: string;
+            promotion: number;
+            /** Pays */
+            country?: string;
+            /** Téléphone */
+            phone?: string;
+            /** Ville */
+            city?: string;
+            /** Université */
+            university?: string;
+            /** Programme MCF */
+            mcf_program?: string;
+            /** Secteur d'activité */
+            sector?: components["schemas"]["SectorEnum"] | components["schemas"]["BlankEnum"];
+            readonly sector_display: string;
+            /** Poste actuel */
+            current_position?: string;
+            /** Organisation */
+            organization?: string;
+            /** Biographie */
+            bio?: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            linkedin_url?: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            birth_date?: string | null;
+            /** Genre */
+            gender?: components["schemas"]["GenderEnum"] | components["schemas"]["BlankEnum"];
+            /** Publication dans l'annuaire */
+            directory_consent?: boolean;
+            /** Statut */
+            readonly status: components["schemas"]["StatusFf2Enum"];
+            readonly status_display: string;
+            /** Origine */
+            readonly source: components["schemas"]["SourceEnum"];
+            /** Mandat */
+            mandate?: number | null;
+            readonly completeness: number;
+            readonly has_account: boolean;
+            /** Format: email */
+            readonly user_email: string;
+            /**
+             * Créé le
+             * Format: date-time
+             */
+            readonly created_at: string;
+            /**
+             * Modifié le
+             * Format: date-time
+             */
+            readonly updated_at: string;
+        };
+        /** @description Rapport d'import, avec ses lignes en erreur et avertissements. */
+        AlumniImport: {
+            readonly id: number;
+            /** Nom du fichier */
+            readonly filename: string;
+            /** Mode strict */
+            readonly strict: boolean;
+            /**
+             * Importé le
+             * Format: date-time
+             */
+            readonly created_at: string;
+            /** Format: email */
+            readonly uploaded_by_email: string;
+            /** Lignes lues */
+            readonly rows_total: number;
+            /** Profils créés */
+            readonly rows_created: number;
+            /** Profils mis à jour */
+            readonly rows_updated: number;
+            /** Lignes sans changement */
+            readonly rows_skipped: number;
+            /** Lignes en erreur */
+            readonly rows_failed: number;
+            readonly errors: components["schemas"]["AlumniImportError"][];
+        };
+        AlumniImportCreate: {
+            /** Format: uri */
+            fichier: string;
+            /** @default false */
+            strict: boolean;
+        };
+        AlumniImportError: {
+            readonly id: number;
+            /** Ligne */
+            readonly line_number: number;
+            /** Ligne brute */
+            readonly raw_row: unknown;
+            readonly message: string;
+        };
+        /** @description Lecture d'une demande dans le back-office. */
+        AlumniRegistrationAdmin: {
+            readonly id: number;
+            /** Prénom */
+            readonly first_name: string;
+            /** Nom */
+            readonly last_name: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            readonly email: string;
+            readonly promotion: number;
+            /** Pays */
+            readonly country: string;
+            /** Téléphone */
+            readonly phone: string;
+            /** Ville */
+            readonly city: string;
+            /** Université */
+            readonly university: string;
+            /** Programme MCF */
+            readonly mcf_program: string;
+            /** Secteur d'activité */
+            readonly sector: components["schemas"]["SectorEnum"];
+            readonly sector_display: string;
+            /** Poste actuel */
+            readonly current_position: string;
+            /** Organisation */
+            readonly organization: string;
+            /** Biographie */
+            readonly bio: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            readonly linkedin_url: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            readonly birth_date: string | null;
+            /** Genre */
+            readonly gender: components["schemas"]["GenderEnum"];
+            /** Publication dans l'annuaire */
+            readonly directory_consent: boolean;
+            /** Statut */
+            readonly status: components["schemas"]["AlumniRegistrationAdminStatusEnum"];
+            readonly status_display: string;
+            /**
+             * Soumise le
+             * Format: date-time
+             */
+            readonly submitted_at: string;
+            /**
+             * Instruite le
+             * Format: date-time
+             */
+            readonly reviewed_at: string | null;
+            /** Format: email */
+            readonly reviewed_by_email: string;
+            /** Motif du rejet */
+            readonly rejection_reason: string;
+            /** Profil créé */
+            readonly profile: number | null;
+        };
+        /**
+         * @description * `en_attente` - En attente
+         *     * `approuvee` - Approuvée
+         *     * `rejetee` - Rejetée
+         * @enum {string}
+         */
+        AlumniRegistrationAdminStatusEnum: "en_attente" | "approuvee" | "rejetee";
+        /** @description Soumission publique. Aucun champ d'instruction n'est exposé. */
+        AlumniRegistrationCreate: {
+            readonly id: number;
+            /** Prénom */
+            first_name: string;
+            /** Nom */
+            last_name: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            email: string;
+            promotion: number;
+            /** Pays */
+            country?: string;
+            /** Téléphone */
+            phone?: string;
+            /** Ville */
+            city?: string;
+            /** Université */
+            university?: string;
+            /** Programme MCF */
+            mcf_program?: string;
+            /** Secteur d'activité */
+            sector?: components["schemas"]["SectorEnum"] | components["schemas"]["BlankEnum"];
+            /** Poste actuel */
+            current_position?: string;
+            /** Organisation */
+            organization?: string;
+            /** Biographie */
+            bio?: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            linkedin_url?: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            birth_date?: string | null;
+            /** Genre */
+            gender?: components["schemas"]["GenderEnum"] | components["schemas"]["BlankEnum"];
+            /** Publication dans l'annuaire */
+            directory_consent?: boolean;
+        };
+        /** @enum {unknown} */
+        BlankEnum: "";
+        /**
+         * @description * `femme` - Femme
+         *     * `homme` - Homme
+         *     * `autre` - Autre
+         *     * `non_precise` - Non précisé
+         * @enum {string}
+         */
+        GenderEnum: "femme" | "homme" | "autre" | "non_precise";
+        InvitationActivate: {
+            token: string;
+            password: string;
+        };
+        InvitationVerify: {
+            token: string;
+        };
+        PaginatedAdminProfileList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["AdminProfile"][];
+        };
+        PaginatedAlumniImportList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["AlumniImport"][];
+        };
+        PaginatedAlumniRegistrationAdminList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["AlumniRegistrationAdmin"][];
+        };
+        PaginatedPublicDirectoryList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["PublicDirectory"][];
+        };
+        /** @description Niveau administration : tous les champs, e-mail et téléphone inclus. */
+        PatchedAdminProfile: {
+            readonly id?: number;
+            /** Prénom */
+            first_name?: string;
+            /** Nom */
+            last_name?: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            email?: string;
+            promotion?: number;
+            /** Pays */
+            country?: string;
+            /** Téléphone */
+            phone?: string;
+            /** Ville */
+            city?: string;
+            /** Université */
+            university?: string;
+            /** Programme MCF */
+            mcf_program?: string;
+            /** Secteur d'activité */
+            sector?: components["schemas"]["SectorEnum"] | components["schemas"]["BlankEnum"];
+            readonly sector_display?: string;
+            /** Poste actuel */
+            current_position?: string;
+            /** Organisation */
+            organization?: string;
+            /** Biographie */
+            bio?: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            linkedin_url?: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            birth_date?: string | null;
+            /** Genre */
+            gender?: components["schemas"]["GenderEnum"] | components["schemas"]["BlankEnum"];
+            /** Publication dans l'annuaire */
+            directory_consent?: boolean;
+            /** Statut */
+            readonly status?: components["schemas"]["StatusFf2Enum"];
+            readonly status_display?: string;
+            /** Origine */
+            readonly source?: components["schemas"]["SourceEnum"];
+            /** Mandat */
+            mandate?: number | null;
+            readonly completeness?: number;
+            readonly has_account?: boolean;
+            /** Format: email */
+            readonly user_email?: string;
+            /**
+             * Créé le
+             * Format: date-time
+             */
+            readonly created_at?: string;
+            /**
+             * Modifié le
+             * Format: date-time
+             */
+            readonly updated_at?: string;
+        };
+        /**
+         * @description Profil vu et édité par son titulaire.
+         *
+         *     `email`, `promotion`, `status` et `source` restent réservés à
+         *     l'administration : ce sont des données d'instruction, pas des préférences.
+         */
+        PatchedSelfProfile: {
+            readonly id?: number;
+            /** Prénom */
+            first_name?: string;
+            /** Nom */
+            last_name?: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            readonly email?: string;
+            readonly promotion?: number;
+            /** Pays */
+            country?: string;
+            /** Téléphone */
+            phone?: string;
+            /** Ville */
+            city?: string;
+            /** Université */
+            university?: string;
+            /** Programme MCF */
+            mcf_program?: string;
+            /** Secteur d'activité */
+            sector?: components["schemas"]["SectorEnum"] | components["schemas"]["BlankEnum"];
+            readonly sector_display?: string;
+            /** Poste actuel */
+            current_position?: string;
+            /** Organisation */
+            organization?: string;
+            /** Biographie */
+            bio?: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            linkedin_url?: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            birth_date?: string | null;
+            /** Genre */
+            gender?: components["schemas"]["GenderEnum"] | components["schemas"]["BlankEnum"];
+            /** Publication dans l'annuaire */
+            directory_consent?: boolean;
+            /** Statut */
+            readonly status?: components["schemas"]["StatusFf2Enum"];
+            readonly status_display?: string;
+            readonly completeness?: number;
+        };
+        /** @description Niveau public : ni e-mail, ni téléphone, ni champs enrichis. */
+        PublicDirectory: {
+            readonly id: number;
+            /** Prénom */
+            readonly first_name: string;
+            /** Nom */
+            readonly last_name: string;
+            readonly promotion: number;
+            /** Secteur d'activité */
+            readonly sector: components["schemas"]["SectorEnum"];
+            readonly sector_display: string;
+            /** Pays */
+            readonly country: string;
+            /** Poste actuel */
+            readonly current_position: string;
+            /** Organisation */
+            readonly organization: string;
+        };
+        Reject: {
+            /** @default  */
+            motif: string;
+        };
+        /**
+         * @description * `agriculture` - Agriculture et agro-industrie
+         *     * `sante` - Santé
+         *     * `education` - Éducation et formation
+         *     * `numerique` - Technologies et numérique
+         *     * `finance` - Finance et assurance
+         *     * `entrepreneuriat` - Entrepreneuriat et PME
+         *     * `energie` - Énergie et environnement
+         *     * `industrie` - Industrie et BTP
+         *     * `commerce` - Commerce et distribution
+         *     * `transport` - Transport et logistique
+         *     * `public` - Administration publique
+         *     * `ong` - Société civile et ONG
+         *     * `culture` - Arts, culture et médias
+         *     * `recherche` - Recherche
+         *     * `autre` - Autre
+         * @enum {string}
+         */
+        SectorEnum: "agriculture" | "sante" | "education" | "numerique" | "finance" | "entrepreneuriat" | "energie" | "industrie" | "commerce" | "transport" | "public" | "ong" | "culture" | "recherche" | "autre";
+        /**
+         * @description Profil vu et édité par son titulaire.
+         *
+         *     `email`, `promotion`, `status` et `source` restent réservés à
+         *     l'administration : ce sont des données d'instruction, pas des préférences.
+         */
+        SelfProfile: {
+            readonly id: number;
+            /** Prénom */
+            first_name: string;
+            /** Nom */
+            last_name: string;
+            /**
+             * Adresse e-mail
+             * Format: email
+             */
+            readonly email: string;
+            readonly promotion: number;
+            /** Pays */
+            country?: string;
+            /** Téléphone */
+            phone?: string;
+            /** Ville */
+            city?: string;
+            /** Université */
+            university?: string;
+            /** Programme MCF */
+            mcf_program?: string;
+            /** Secteur d'activité */
+            sector?: components["schemas"]["SectorEnum"] | components["schemas"]["BlankEnum"];
+            readonly sector_display: string;
+            /** Poste actuel */
+            current_position?: string;
+            /** Organisation */
+            organization?: string;
+            /** Biographie */
+            bio?: string;
+            /**
+             * Profil LinkedIn
+             * Format: uri
+             */
+            linkedin_url?: string;
+            /**
+             * Date de naissance
+             * Format: date
+             */
+            birth_date?: string | null;
+            /** Genre */
+            gender?: components["schemas"]["GenderEnum"] | components["schemas"]["BlankEnum"];
+            /** Publication dans l'annuaire */
+            directory_consent?: boolean;
+            /** Statut */
+            readonly status: components["schemas"]["StatusFf2Enum"];
+            readonly status_display: string;
+            readonly completeness: number;
+        };
+        /**
+         * @description * `inscription` - Inscription en ligne
+         *     * `import` - Import
+         * @enum {string}
+         */
+        SourceEnum: "inscription" | "import";
+        /**
+         * @description * `actif` - Actif
+         *     * `suspendu` - Suspendu
+         *     * `archive` - Archivé
+         * @enum {string}
+         */
+        StatusFf2Enum: "actif" | "suspendu" | "archive";
+    };
     responses: never;
     parameters: never;
     requestBodies: never;
@@ -32,7 +1035,621 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    api_v1_health_retrieve: {
+    alumni_admin_imports_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedAlumniImportList"];
+                };
+            };
+        };
+    };
+    alumni_admin_imports_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["AlumniImportCreate"];
+                "application/x-www-form-urlencoded": components["schemas"]["AlumniImportCreate"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlumniImport"];
+                };
+            };
+        };
+    };
+    alumni_admin_imports_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this import alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlumniImport"];
+                };
+            };
+        };
+    };
+    alumni_admin_inscriptions_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+                promotion?: number;
+                /** @description A search term. */
+                search?: string;
+                statut?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedAlumniRegistrationAdminList"];
+                };
+            };
+        };
+    };
+    alumni_admin_inscriptions_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this demande d'inscription alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlumniRegistrationAdmin"];
+                };
+            };
+        };
+    };
+    alumni_admin_inscriptions_approuver_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this demande d'inscription alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_inscriptions_rejeter_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this demande d'inscription alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["Reject"];
+                "application/x-www-form-urlencoded": components["schemas"]["Reject"];
+                "multipart/form-data": components["schemas"]["Reject"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlumniRegistrationAdmin"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_list: {
+        parameters: {
+            query?: {
+                a_un_compte?: boolean;
+                consentement?: boolean;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+                pays?: string;
+                promotion?: number;
+                /** @description A search term. */
+                search?: string;
+                secteur?: string;
+                statut?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedAdminProfileList"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedAdminProfile"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedAdminProfile"];
+                "multipart/form-data": components["schemas"]["PatchedAdminProfile"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_archiver_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_inviter_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_reactiver_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_admin_profils_suspendre_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfile"];
+                };
+            };
+        };
+    };
+    alumni_annuaire_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+                pays?: string;
+                promotion?: number;
+                /** @description A search term. */
+                search?: string;
+                secteur?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedPublicDirectoryList"];
+                };
+            };
+        };
+    };
+    alumni_annuaire_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this profil alumni. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublicDirectory"];
+                };
+            };
+        };
+    };
+    alumni_inscriptions_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AlumniRegistrationCreate"];
+                "application/x-www-form-urlencoded": components["schemas"]["AlumniRegistrationCreate"];
+                "multipart/form-data": components["schemas"]["AlumniRegistrationCreate"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlumniRegistrationCreate"];
+                };
+            };
+        };
+    };
+    alumni_invitation_activer_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InvitationActivate"];
+                "application/x-www-form-urlencoded": components["schemas"]["InvitationActivate"];
+                "multipart/form-data": components["schemas"]["InvitationActivate"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
+    alumni_invitation_verifier_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InvitationVerify"];
+                "application/x-www-form-urlencoded": components["schemas"]["InvitationVerify"];
+                "multipart/form-data": components["schemas"]["InvitationVerify"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
+    alumni_moi_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SelfProfile"];
+                };
+            };
+        };
+    };
+    alumni_moi_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedSelfProfile"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedSelfProfile"];
+                "multipart/form-data": components["schemas"]["PatchedSelfProfile"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SelfProfile"];
+                };
+            };
+        };
+    };
+    auth_csrf_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    auth_login_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    auth_logout_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    auth_me_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    auth_refresh_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    health_retrieve: {
         parameters: {
             query?: never;
             header?: never;
