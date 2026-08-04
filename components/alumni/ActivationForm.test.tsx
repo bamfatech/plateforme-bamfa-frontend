@@ -71,9 +71,12 @@ describe("ActivationForm", () => {
     await userEvent.type(screen.getByLabelText("Confirmation"), "autre-chose");
     await userEvent.click(screen.getByRole("button", { name: /activer/i }));
 
-    expect(
-      screen.getByText("Les deux mots de passe ne correspondent pas."),
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText("Confirmation")).toHaveAccessibleDescription(
+      "Les deux mots de passe ne correspondent pas.",
+    );
+    expect(screen.getByLabelText("Mot de passe")).not.toHaveAttribute(
+      "aria-describedby",
+    );
     expect(
       mock.history.post.filter((a) => a.url?.includes("activer")),
     ).toHaveLength(0);
@@ -94,6 +97,28 @@ describe("ActivationForm", () => {
     await userEvent.click(screen.getByRole("button", { name: /activer/i }));
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/connexion"));
+  });
+
+  it("signale qu'un compte existait déjà et ne redirige pas", async () => {
+    mock
+      .onPost("/alumni/invitation/verifier/")
+      .reply(200, { first_name: "Awa", email: "awa@example.org" });
+    mock.onPost("/alumni/invitation/activer/").reply(200, {
+      created: false,
+      detail:
+        "Un compte existait déjà pour cette adresse. Connectez-vous avec vos identifiants habituels.",
+    });
+    renderWithClient(<ActivationForm token="jeton-valide" />);
+    await screen.findByText(/Bonjour Awa/);
+
+    await userEvent.type(screen.getByLabelText("Mot de passe"), MOT_DE_PASSE);
+    await userEvent.type(screen.getByLabelText("Confirmation"), MOT_DE_PASSE);
+    await userEvent.click(screen.getByRole("button", { name: /activer/i }));
+
+    expect(
+      await screen.findByText(/Un compte existait déjà/),
+    ).toBeInTheDocument();
+    expect(push).not.toHaveBeenCalled();
   });
 
   it("remonte les messages de validation du mot de passe", async () => {

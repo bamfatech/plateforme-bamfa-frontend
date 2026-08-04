@@ -7,11 +7,17 @@ import { ApiError, api } from "@/lib/api/client";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { Field } from "@/components/ui/Field";
+import { Link } from "@/components/ui/Link";
 import { Spinner } from "@/components/ui/Spinner";
 
 interface Identite {
   first_name: string;
   email: string;
+}
+
+interface ReponseActivation {
+  created: boolean;
+  detail: string;
 }
 
 /** Extrait le premier message d'un champ du format d'erreur normalisé de l'API. */
@@ -33,7 +39,9 @@ export function ActivationForm({ token }: { token: string | null }) {
   const [motDePasse, setMotDePasse] = useState("");
   const [confirmation, setConfirmation] = useState("");
   const [erreurMotDePasse, setErreurMotDePasse] = useState("");
+  const [erreurConfirmation, setErreurConfirmation] = useState("");
   const [envoi, setEnvoi] = useState(false);
+  const [compteExistant, setCompteExistant] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -73,22 +81,27 @@ export function ActivationForm({ token }: { token: string | null }) {
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
     setErreurMotDePasse("");
+    setErreurConfirmation("");
     if (!motDePasse) {
       setErreurMotDePasse("Le mot de passe est requis.");
       return;
     }
     if (motDePasse !== confirmation) {
-      setErreurMotDePasse("Les deux mots de passe ne correspondent pas.");
+      setErreurConfirmation("Les deux mots de passe ne correspondent pas.");
       return;
     }
 
     setEnvoi(true);
     try {
-      await api.post("/alumni/invitation/activer/", {
-        token,
-        password: motDePasse,
-      });
-      router.push("/connexion");
+      const { data } = await api.post<ReponseActivation>(
+        "/alumni/invitation/activer/",
+        { token, password: motDePasse },
+      );
+      if (data.created) {
+        router.push("/connexion");
+      } else {
+        setCompteExistant(data.detail);
+      }
     } catch (erreur) {
       setErreurMotDePasse(
         messageApi(
@@ -118,6 +131,17 @@ export function ActivationForm({ token }: { token: string | null }) {
     return <Alert variant="danger">{erreurJeton}</Alert>;
   }
 
+  if (compteExistant) {
+    return (
+      <div className="flex flex-col gap-4">
+        <Alert variant="info">{compteExistant}</Alert>
+        <Link href="/connexion" className="self-start">
+          Se connecter
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6">
       <div>
@@ -144,6 +168,7 @@ export function ActivationForm({ token }: { token: string | null }) {
         autoComplete="new-password"
         value={confirmation}
         onChange={(e) => setConfirmation(e.target.value)}
+        error={erreurConfirmation}
       />
 
       <Button type="submit" loading={envoi} className="self-start">
