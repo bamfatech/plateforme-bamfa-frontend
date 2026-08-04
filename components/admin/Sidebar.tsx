@@ -16,7 +16,7 @@ interface NavItem {
 const NAV: NavItem[] = [
   { label: "Tableau de bord", href: "/admin", icon: LayoutDashboard },
   { label: "Contenus", icon: FileText, soon: true },
-  { label: "Alumni", icon: Users, soon: true },
+  { label: "Alumni", href: "/admin/alumni", icon: Users },
   { label: "Événements", icon: Calendar, soon: true },
 ];
 
@@ -40,7 +40,7 @@ export function Sidebar({ user }: { user: User }) {
               >
                 <Icon className="h-5 w-5" aria-hidden="true" />
                 {item.label}
-                <span className="ml-auto rounded-sm bg-stone-100 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-stone-500">
+                <span className="ml-auto rounded-sm bg-stone-100 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-stone-600">
                   À venir
                 </span>
               </span>
